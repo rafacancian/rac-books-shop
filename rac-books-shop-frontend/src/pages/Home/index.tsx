@@ -3,54 +3,56 @@ import { useState } from "react"
 
 import './Home.css'
 import Banner from "../../components/Banner"
+import GridBooks from "../../components/GridBooks"
+import GridTitle from "../../components/GridTitle"
 
 const Home = () => {
     const [search, setSearch] = useState("")
 
     const newBooks = [
         {
-            autor: 'Tárcio Zemel',
-            descricao: 'Técnicas e ferramentas que fazem a diferença nos seus estilos',
-            imagem: '/imagens/livros/css.jpg',
-            nome: 'CSS Eficiente',
-            preco: 29.9
+            author: 'Tárcio Zemel',
+            description: 'Técnicas e ferramentas que fazem a diferença nos seus estilos',
+            image: '/imagens/livros/css.jpg',
+            name: 'CSS Eficiente',
+            price: 29.9
         },
         {
-            autor: 'Sass',
-            descricao: 'Aprendendo pré-processadores CSS',
-            imagem: '/imagens/livros/sass.jpg',
-            nome: 'Natan Souza',
-            preco: 29.9
+            author: 'Sass',
+            description: 'Aprendendo pré-processadores CSS',
+            image: '/imagens/livros/sass.jpg',
+            name: 'Natan Souza',
+            price: 29.9
         },
         {
-            autor: 'Diego Eis',
-            descricao: 'O caminho das pedras para ser um dev Front-End',
-            imagem: '/imagens/livros/frontend.jpg',
-            nome: 'Guia Front-End',
-            preco: 29.9
+            author: 'Diego Eis',
+            description: 'O caminho das pedras para ser um dev Front-End',
+            image: '/imagens/livros/frontend.jpg',
+            name: 'Guia Front-End',
+            price: 29.9
         },
     ]
     const bestSellersBooks = [
         {
-            autor: 'Thiago da Silva Adriano',
-            descricao: 'Melhore suas aplicações JavaScript',
-            imagem: '/imagens/livros/typescript.jpg',
-            nome: 'Guia prático de TypeScript',
-            preco: 29.9
+            author: 'Thiago da Silva Adriano',
+            description: 'Melhore suas aplicações JavaScript',
+            image: '/imagens/livros/typescript.jpg',
+            name: 'Guia prático de TypeScript',
+            price: 29.9
         },
         {
-            autor: 'Akira Hanashiro',
-            descricao: 'A revolucionária linguagem de consulta e manipulação de dados para APIs',
-            imagem: '/imagens/livros/graphql.jpg',
-            nome: 'GraphQL',
-            preco: 29.9
+            author: 'Akira Hanashiro',
+            description: 'A revolucionária linguagem de consulta e manipulação de dados para APIs',
+            image: '/imagens/livros/graphql.jpg',
+            name: 'GraphQL',
+            price: 29.9
         },
         {
-            autor: 'Vinícius Carvalho',
-            descricao: 'PostgreSQL',
-            imagem: '/imagens/livros/postgre.jpg',
-            nome: 'PostgreSQL',
-            preco: 29.9
+            author: 'Vinícius Carvalho',
+            description: 'PostgreSQL',
+            image: '/imagens/livros/postgre.jpg',
+            name: 'PostgreSQL',
+            price: 29.9
         },
     ]
 
@@ -68,6 +70,11 @@ const Home = () => {
                 />
             </form>
         </Banner>
+
+        <GridTitle text="Releases"/>
+        <GridBooks books={newBooks}/>
+        <GridTitle text="Best Seller"/>
+        <GridBooks books={bestSellersBooks}/>
     </section>)
 }
 
