@@ -5,6 +5,7 @@ import './Home.css'
 import Banner from "../../components/Banner"
 import GridBooks from "../../components/GridBooks"
 import GridTitle from "../../components/GridTitle"
+import Newsletter from "../../components/Newsletter"
 
 const Home = () => {
     const [search, setSearch] = useState("")
@@ -75,6 +76,7 @@ const Home = () => {
         <GridBooks books={newBooks}/>
         <GridTitle text="Best Seller"/>
         <GridBooks books={bestSellersBooks}/>
+        <Newsletter />
     </section>)
 }
 
