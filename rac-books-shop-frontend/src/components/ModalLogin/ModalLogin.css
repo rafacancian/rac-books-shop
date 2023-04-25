@@ -1,0 +1,15 @@
+.modalLoginBody {
+    display: flex;
+    align-items: center;
+    padding-top: 32px;
+}
+
+.modalLoginBody form {
+    width: 500px;
+    max-width: 100%;
+}
+
+.modalLoginBody form .acoes {
+    margin-top: 48px;
+    text-align: center;
+}

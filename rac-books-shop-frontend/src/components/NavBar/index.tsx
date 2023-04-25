@@ -5,11 +5,13 @@ import NavButton from "../NavButton"
 import userImg from './assets/usuario.svg'
 import ModalCreateUser from "../ModalCreateUser"
 import { useState } from "react"
+import ModalLogin from "../ModalLogin"
 
 const NavBar = () => {
 
-    const [modalOpened, setModalOpened] = useState(false)
-
+    const [modalLoginOpened, setModalLoginOpened] = useState(false)
+    const [modalRegisterOpened, setModalRegisterOpened] = useState(false)
+    
     return (
         <nav className="ab-navbar">
             <h1 className="logo">
@@ -38,14 +40,19 @@ const NavBar = () => {
             </ul>
             <ul className="acoes">
                 <li>
-                    <NavButton text="Login" textAltSrc="User icon" imageSrc={userImg} />
+                    <NavButton text="Login" textAltSrc="User icon" imageSrc={userImg} 
+                    onClick={() => setModalLoginOpened(true)}/>
+                    <ModalLogin 
+                        opened={modalLoginOpened}
+                        whenClose={() => setModalLoginOpened(false)}
+                    />
                 </li>
                 <li>
                     <NavButton text="Create Account" textAltSrc="User icon" imageSrc={userImg}
-                        onClick={() => setModalOpened(true)}/>
+                        onClick={() => setModalRegisterOpened(true)}/>
                     <ModalCreateUser 
-                        opened={modalOpened}
-                        whenClose={() => setModalOpened(false)}
+                        opened={modalRegisterOpened}
+                        whenClose={() => setModalRegisterOpened(false)}
                     />
                 </li>
             </ul>
