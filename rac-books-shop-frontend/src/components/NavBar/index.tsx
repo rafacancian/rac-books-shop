@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 import logo from './assets/logo.png'
-import './NavegationBar.css'
+import './NavBar.css'
 import NavButton from "../NavButton"
 import userImg from './assets/usuario.svg'
 
-const NavegationBar = () => {
+const NavBar = () => {
     return (
     <nav className="ab-navbar">
         <h1 className="logo">
@@ -47,4 +47,4 @@ const NavegationBar = () => {
     </nav>)
 }
 
-export default NavegationBar
+export default NavBar
