@@ -1,15 +1,15 @@
-.createUserBody {
+.registerBody {
     display: flex;
     align-items: center;
     padding-top: 32px;
 }
 
-.createUserBody form {
+.registerBody form {
     width: 500px;
     max-width: 100%;
 }
 
-.createUserBody form .acoes {
+.registerBody form .acoes {
     margin-top: 48px;
     text-align: center;
 }

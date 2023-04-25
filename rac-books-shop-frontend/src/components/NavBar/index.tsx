@@ -3,7 +3,7 @@ import logo from './assets/logo.png'
 import './NavBar.css'
 import NavButton from "../NavButton"
 import userImg from './assets/usuario.svg'
-import ModalCreateUser from "../ModalCreateUser"
+import ModalRegister from "../ModalRegister"
 import { useState } from "react"
 import ModalLogin from "../ModalLogin"
 
@@ -50,7 +50,7 @@ const NavBar = () => {
                 <li>
                     <NavButton text="Create Account" textAltSrc="User icon" imageSrc={userImg}
                         onClick={() => setModalRegisterOpened(true)}/>
-                    <ModalCreateUser 
+                    <ModalRegister 
                         opened={modalRegisterOpened}
                         whenClose={() => setModalRegisterOpened(false)}
                     />

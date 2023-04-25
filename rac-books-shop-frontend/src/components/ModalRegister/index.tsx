@@ -2,14 +2,14 @@ import { AbBotao, AbCampoTexto, AbModal } from "ds-alurabooks"
 import { useState } from "react"
 
 import loginImg from './assets/login.png'
-import './ModalCreateUser.css'
+import './ModalRegister.css'
 
-interface PropsModalCreateUser {
+interface PropsModalRegister {
     opened: boolean
     whenClose: () => void
 }
 
-const ModalCreateUser = (props : PropsModalCreateUser) => {
+const ModalRegister = (props : PropsModalRegister) => {
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -40,7 +40,7 @@ const ModalCreateUser = (props : PropsModalCreateUser) => {
             aberta={props.opened}
             aoFechar={props.whenClose}
         >
-        <section className="createUserBody">
+        <section className="registerBody">
             <figure>
                 <img src={loginImg} alt="Register user icon" />
             </figure>
@@ -91,4 +91,4 @@ const ModalCreateUser = (props : PropsModalCreateUser) => {
     </AbModal>)
 }
 
-export default ModalCreateUser
+export default ModalRegister
