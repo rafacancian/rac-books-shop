@@ -1,5 +1,6 @@
 import { AbBotao, AbCampoTexto, AbModal } from "ds-alurabooks"
 import { useState } from "react"
+import axios from "axios";
 
 import imagemPrincipal from './assets/login.png'
 
@@ -10,7 +11,7 @@ interface PropsModalLogin {
     whenClose: () => void
 }
 
-const ModalLogin = (props : PropsModalLogin) => {
+const ModalLogin = (props: PropsModalLogin) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -21,33 +22,53 @@ const ModalLogin = (props : PropsModalLogin) => {
             email,
             password,
         }
-        // TODO http.post to login user
+        console.log(user)
+
+       axios.create({
+            baseURL: 'http://localhost:8000',
+            headers: {
+                Accept: 'application/json',
+                Content: 'application/json'
+            }
+        }).post('public/login', user)
+            .then(response => {
+                sessionStorage.setItem('token', response.data.access_token)
+                setEmail('')
+                setPassword('')
+            })
+            .catch(error => {
+                if (error?.response?.data?.message) {
+                    alert("Login error: " + error);
+                } else {
+                    alert("Login error")
+                }
+            })
     }
 
-    return (<AbModal 
-        titulo="Login" 
+    return (<AbModal
+        titulo="Login"
         aberta={props.opened}
-        aoFechar={props.whenClose}    
+        aoFechar={props.whenClose}
     >
         <section className="modalLoginBody">
             <figure>
                 <img src={imagemPrincipal} alt="Login user Icon" />
             </figure>
             <form onSubmit={aoSubmeterFormular}>
-                <AbCampoTexto 
+                <AbCampoTexto
                     label="Email"
                     value={email}
                     onChange={setEmail}
                     type="email"
                 />
-                <AbCampoTexto 
+                <AbCampoTexto
                     label="Password"
                     value={password}
                     onChange={setPassword}
                     type="password"
                 />
                 <div className="acoes">
-                    <AbBotao texto="Login"/>
+                    <AbBotao texto="Login" />
                 </div>
             </form>
         </section>
