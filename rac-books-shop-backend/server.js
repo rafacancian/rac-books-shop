@@ -1,5 +1,5 @@
 const fs = require('fs')
-const bodyParse = require('body-parser')
+const bodyParser = require('body-parser')
 const jsonServer = require('json-server')
 const jwt = require('jsonwebtoken')
 
@@ -62,4 +62,10 @@ server.post('/public/register', (req, res) => {
 
     const access_token = createToken({ email, password })
     res.status(200).json({ access_token})
+})
+
+server.use(router)
+
+server.listen(8000, () => {
+  console.log("RAC Books Shop API Running: http://localhost:8000")
 })
