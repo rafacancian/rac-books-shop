@@ -1,10 +1,3 @@
-# rac-books-shop
-
-## git remote add rac-books-shop-backend https://github.com/rafacancian/rac-books-shop-backend.git
-## git remote set-url rac-books-shop-backend https://github.com/rafacancian/rac-books-shop-backend.git
-## git subtree add --prefix=rac-books-shop-backend/ rac-books-shop-backend main
-
-
 # RAC Books Shop 
 
 # 1 Create repositories
