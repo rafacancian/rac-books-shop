@@ -13,7 +13,6 @@
       "total": 69.90
     }
   ],
-
   "categories": [
     {
       "id": 1,
@@ -36,7 +35,6 @@
       "slug": "Design and UX"
     }
   ],
-
   "authors": [
     {
       "id": 1,
@@ -54,8 +52,6 @@
       "description": "Description about author Rafael Cancian 03"
     }
   ],
-
-
   "books": [
     {
       "id": 1,
