@@ -1,8 +1,6 @@
 # RAC Books Shop Backend 
-Backend project created with nodejs for rac books shop <br /><br />
-
-JSONServer + JWT Auth <br />
-It is an Rest Mock API using json-server e JWT. <br />
+Backend project created with nodejs for rac books shop <br />
+It is an Rest Mock API using Json Server with JWT<br />
 
 ## 🛠️ Install
 
