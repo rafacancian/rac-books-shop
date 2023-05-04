@@ -22,3 +22,18 @@ function verifyToken(token) {
         decode !== undefined ? decode : error
     })
 }
+
+function verifyUserExist({email, password}) {
+    return userdb.users.findIndex(user => user.email === email && user.password === password) !== -1
+}
+
+server.post('/public/register', (req, res) => {
+    const {email, password, name, address, complement, cep } = req.body;
+
+    if(verifyUserExist(email, password)) {
+        const status = 401;
+        const message = "User already registered";
+        res.status(status).json({status, message});
+        return
+    }
+})
