@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken')
 const server = jsonServer.create()
 const router = jsonServer.router('./database.json')
 let userdb = JSON.parse(fs.readFileSync('./users.json', 'UTF-8'))
+let database = JSON.parse(fs.readFileSync("./database.json", "UTF-8"))
 
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(bodyParser.json())
@@ -78,7 +79,16 @@ server.post("/public/login" , (req, res) => {
     res.status(200).json({access_token, user})
 })
 
-ServiceWorkerRegistration.
+server.get("/public/releases", (req, res) => {
+    console.log("get releases")
+    let databaseResult = {...database}
+    res.status(200).json(databaseResult.releases)
+})
+
+server.get("/public/bestsellers" , (req, res) => {
+    console.log("get best sellers")
+    res.status(200).json(database.bestSellers)
+})
 
 server.use(router)
 
