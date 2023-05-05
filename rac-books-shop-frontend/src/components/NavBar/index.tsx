@@ -12,6 +12,18 @@ const NavBar = () => {
     const [modalLoginOpened, setModalLoginOpened] = useState(false)
     const [modalRegisterOpened, setModalRegisterOpened] = useState(false)
     
+    const token = sessionStorage.getItem("token")
+    const [userLogged, setUserLogged] = useState<boolean>(token != null && token  != undefined)
+    
+    const logout = () => {
+
+    }
+
+    const whenExecuteLogin = () => {
+        setModalLoginOpened(false)
+        setUserLogged(true)
+    }
+
     return (
         <nav className="ab-navbar">
             <h1 className="logo">
@@ -39,12 +51,14 @@ const NavBar = () => {
                 </li>
             </ul>
             <ul className="acoes">
+                {!userLogged && (<>
                 <li>
                     <NavButton text="Login" textAltSrc="User icon" imageSrc={userImg} 
                     onClick={() => setModalLoginOpened(true)}/>
                     <ModalLogin 
                         opened={modalLoginOpened}
                         whenClose={() => setModalLoginOpened(false)}
+                        whenExecuteLogin={whenExecuteLogin}
                     />
                 </li>
                 <li>
@@ -55,6 +69,15 @@ const NavBar = () => {
                         whenClose={() => setModalRegisterOpened(false)}
                     />
                 </li>
+                </>)}
+                {userLogged && <>
+                    <li>
+                        <Link to="/my-account/orders">My account</Link>
+                    </li>
+                    <li>
+                        <Link to="#">Logout</Link>
+                    </li>
+                </>}
             </ul>
         </nav>
     )

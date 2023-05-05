@@ -9,6 +9,7 @@ import './ModalLogin.css'
 interface PropsModalLogin {
     opened: boolean
     whenClose: () => void
+    whenExecuteLogin: () => void
 }
 
 const ModalLogin = (props: PropsModalLogin) => {
@@ -35,6 +36,7 @@ const ModalLogin = (props: PropsModalLogin) => {
                 sessionStorage.setItem('token', response.data.access_token)
                 setEmail('')
                 setPassword('')
+                props.whenExecuteLogin()
             })
             .catch(error => {
                 if (error?.response?.data?.message) {
