@@ -64,6 +64,22 @@ server.post('/public/register', (req, res) => {
     res.status(200).json({ access_token})
 })
 
+server.post("/public/login" , (req, res) => {
+    const {email, password} = req.body;
+    if(!verifyUserExist({email, password})){
+        const status = 401;
+        const message = "Email/password invalid"
+        res.status(status).json({status, message})
+        return
+    }
+    const access_token = createToken({email, password})
+    let user = { ...userdb.users.find(user => user.email === email && user.password === password)}
+    delete user.password
+    res.status(200).json({access_token, user})
+})
+
+ServiceWorkerRegistration.
+
 server.use(router)
 
 server.listen(8000, () => {
