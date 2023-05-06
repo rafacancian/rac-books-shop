@@ -1,12 +1,12 @@
-import { AbBotao, AbCampoTexto, AbModal } from "ds-alurabooks"
+
 import { useState } from "react"
 import axios from "axios";
 import Button from '@mui/material/Button';
-
 import imagemPrincipal from './assets/login.png'
 
 import './ModalLogin.css'
-import { Box, Modal, Stack, Typography } from "@mui/material";
+import { Box, Modal, Stack, TextField } from "@mui/material";
+import React from "react";
 
 interface PropsModalLogin {
     opened: boolean
@@ -19,7 +19,6 @@ const styleModal = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "40%",
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -30,7 +29,7 @@ const ModalLogin = (props: PropsModalLogin) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const aoSubmeterFormular = () => {
+    const submitLogin = () => {
         const user = {
             email,
             password,
@@ -60,6 +59,7 @@ const ModalLogin = (props: PropsModalLogin) => {
     }
 
     return (
+
         <Modal
             open={props.opened}
             onClose={props.whenClose}
@@ -70,31 +70,51 @@ const ModalLogin = (props: PropsModalLogin) => {
                     <figure>
                         <img src={imagemPrincipal} alt="Login user Icon" />
                     </figure>
-                    <form onSubmit={aoSubmeterFormular}>
-                        <AbCampoTexto
-                            label="Email"
-                            value={email}
-                            onChange={setEmail}
-                            type="email"
-                        />
-                        <AbCampoTexto
-                            label="Password"
-                            value={password}
-                            onChange={setPassword}
-                            type="password"
-                        />
+                    <form onSubmit={submitLogin}>
+
+                        <Box
+                            component="form"
+                            alignItems={"center"}
+                            sx={{ '& .MuiTextField-root': { m: 1, width: '42ch' }, }}
+                            noValidate
+                            autoComplete="off">
+
+                            <TextField
+                                required
+                                id="filled-required"
+                                label="Email"
+                                variant="filled"
+                                value={email}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setEmail(event.target.value);
+                                }}
+                            />
+
+                            <TextField
+                                id="filled-password-input"
+                                label="Password"
+                                type="password"
+                                autoComplete="current-password"
+                                variant="filled"
+                                value={password}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setPassword(event.target.value);
+                                }}
+                            />
+                        </Box>
+
                         <div className="acoes">
-                            <Stack spacing={2} direction="row">
+                            <Stack alignItems={"end"} marginRight={"15%"}>
                                 <Button variant="contained" size="large"
-                                    onClick={() => { aoSubmeterFormular() }}
+                                    onClick={() => { submitLogin() }}
                                 >Login </Button>
                             </Stack>
                         </div>
+
                     </form>
                 </section>
             </Box>
-        </Modal>
-
+        </Modal >
     )
 }
 
