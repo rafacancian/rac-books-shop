@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom"
-import PageTemplate from "../pages/PageTemplate"
 import PaginaBase from "../pages/PaginaBase"
 import Home from "../pages/Home"
 import Account from "../pages/Account"

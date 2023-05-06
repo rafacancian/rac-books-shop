@@ -1,5 +1,5 @@
 import axios from "axios"
-import { AbBotao } from "ds-alurabooks"
+import Button from '@mui/material/Button';
 import { useEffect, useState } from "react"
 
 import "./Orders.css"
@@ -29,7 +29,7 @@ const Orders = () => {
                         <li>Total value: <strong>{formatCurrencyBRL.format(order.total)}</strong></li>
                         <li>Delivery Date: <strong>{new Date(order.deliveryDate).toLocaleDateString()}</strong></li>
                     </ul>
-                    <AbBotao texto="Details" />
+                    <Button variant="contained" size="large" key={order.id}>Details</Button>
                 </div>
             ))}
 

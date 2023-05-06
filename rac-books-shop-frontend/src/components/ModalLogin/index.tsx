@@ -1,6 +1,7 @@
 import { AbBotao, AbCampoTexto, AbModal } from "ds-alurabooks"
 import { useState } from "react"
 import axios from "axios";
+import Button from '@mui/material/Button';
 
 import imagemPrincipal from './assets/login.png'
 
@@ -70,7 +71,7 @@ const ModalLogin = (props: PropsModalLogin) => {
                     type="password"
                 />
                 <div className="acoes">
-                    <AbBotao texto="Login" />
+                    <Button variant="contained" size="large">Login </Button>
                 </div>
             </form>
         </section>

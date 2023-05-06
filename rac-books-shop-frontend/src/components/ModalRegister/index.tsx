@@ -1,6 +1,7 @@
 import { AbBotao, AbCampoTexto, AbModal } from "ds-alurabooks"
 import { useState } from "react"
 import axios, { Axios } from "axios"
+import Button from '@mui/material/Button';
 
 import loginImg from './assets/login.png'
 import './ModalRegister.css'
@@ -98,7 +99,7 @@ const ModalRegister = (props: PropsModalRegister) => {
                         type="password"
                     />
                     <div className="acoes">
-                        <AbBotao texto="Register" />
+                    <Button variant="contained" size="large">Create </Button>
                     </div>
                 </form>
             </section>

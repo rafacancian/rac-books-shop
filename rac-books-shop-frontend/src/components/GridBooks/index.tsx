@@ -1,8 +1,8 @@
-import { AbBotao, AbCard } from "ds-alurabooks"
 import { useState } from "react"
 import { IBook } from "../../interfaces/IBook"
-
+import Button from '@mui/material/Button';
 import './GridBooks.css'
+import { AbCard } from "ds-alurabooks";
 
 interface GridBooksProps {
     books: IBook[]
@@ -41,7 +41,7 @@ const GridBooks = ({ books }: GridBooksProps) => {
                         <strong>{Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(selectedBook.price)}</strong>
                     </div>
                     <div>
-                        <AbBotao texto="Comprar" />
+                    <Button variant="contained" size="large">Buy</Button>
                     </div>
                 </footer>
             </div>
