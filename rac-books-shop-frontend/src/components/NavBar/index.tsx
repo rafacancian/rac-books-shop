@@ -4,19 +4,25 @@ import './NavBar.css'
 import NavButton from "../NavButton"
 import userImg from './assets/usuario.svg'
 import ModalRegister from "../ModalRegister"
-import { useState } from "react"
 import ModalLogin from "../ModalLogin"
+
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { useState } from "react"
+import React from "react"
 
 const NavBar = () => {
 
     const [modalLoginOpened, setModalLoginOpened] = useState(false)
+
     const [modalRegisterOpened, setModalRegisterOpened] = useState(false)
-    
+
     const token = sessionStorage.getItem("token")
     const [userLogged, setUserLogged] = useState<boolean>(token != null && token != undefined)
 
     const navigate = useNavigate();
-    
+
     const whenExecuteLogin = () => {
         setModalLoginOpened(false)
         setUserLogged(true)
@@ -32,6 +38,16 @@ const NavBar = () => {
         navigate("/admin/account/orders")
     }
 
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+
     return (
         <nav className="ab-navbar">
             <h1 className="logo">
@@ -40,23 +56,31 @@ const NavBar = () => {
                 </Link>
             </h1>
             <ul className="navegacao">
-                <li>
-                    <a href="#!">Categories</a>
-                    <ul className="submenu">
-                        <li>
-                            <Link to="/">Backend</Link>
-                        </li>
-                        <li>
-                            <Link to="/">Frontend</Link>
-                        </li>
-                        <li>
-                            <Link to="/">Devops</Link>
-                        </li>
-                        <li>
-                            <Link to="/">Design e UX</Link>
-                        </li>
-                    </ul>
-                </li>
+
+                <div>
+                    <Button
+                        id="basic-button"
+                        aria-controls={open ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}>
+                        Categories
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleClose}>Backend</MenuItem>
+                        <MenuItem onClick={handleClose}>Frontend</MenuItem>
+                        <MenuItem onClick={handleClose}>Devops</MenuItem>
+                        <MenuItem onClick={handleClose}>Design e UX</MenuItem>
+                    </Menu>
+                </div>
             </ul>
             <ul className="acoes">
                 {!userLogged && (<>

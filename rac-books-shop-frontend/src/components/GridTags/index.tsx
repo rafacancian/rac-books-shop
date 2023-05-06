@@ -25,7 +25,7 @@ const GridTags = () => {
         <h4>Search for categories</h4>
         <div className="container">
             {tags.map(tag => 
-             <Button variant="contained" size="large">{tag} </Button>
+             <Button key={tag} variant="contained" size="large">{tag}</Button>
              )}
         </div>
     </section>)

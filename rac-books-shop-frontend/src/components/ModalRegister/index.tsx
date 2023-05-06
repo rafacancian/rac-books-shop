@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 
 import loginImg from './assets/login.png'
 import './ModalRegister.css'
+import { Stack } from "@mui/material";
 
 interface PropsModalRegister {
     opened: boolean
@@ -21,8 +22,8 @@ const ModalRegister = (props: PropsModalRegister) => {
     const [password, setPassword] = useState('')
     const [passwordConfirmed, setPasswordConfirmed] = useState('')
 
-    const aoSubmeterFormular = (evento: React.FormEvent<HTMLFormElement>) => {
-        evento.preventDefault()
+    const aoSubmeterFormular = () => {
+        //props.preventDefault()
         const user = {
             name,
             email,
@@ -99,7 +100,11 @@ const ModalRegister = (props: PropsModalRegister) => {
                         type="password"
                     />
                     <div className="acoes">
-                    <Button variant="contained" size="large">Create </Button>
+                        <Stack spacing={2} direction="row">
+                            <Button variant="contained" size="large"
+                           onClick={() => {aoSubmeterFormular()}}
+                            >Create</Button>
+                        </Stack>
                     </div>
                 </form>
             </section>

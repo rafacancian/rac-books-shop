@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import imagemPrincipal from './assets/login.png'
 
 import './ModalLogin.css'
+import { Stack } from "@mui/material";
 
 interface PropsModalLogin {
     opened: boolean
@@ -18,8 +19,7 @@ const ModalLogin = (props: PropsModalLogin) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const aoSubmeterFormular = (evento: React.FormEvent<HTMLFormElement>) => {
-        evento.preventDefault()
+    const aoSubmeterFormular = () => {
         const user = {
             email,
             password,
@@ -71,7 +71,11 @@ const ModalLogin = (props: PropsModalLogin) => {
                     type="password"
                 />
                 <div className="acoes">
-                    <Button variant="contained" size="large">Login </Button>
+                    <Stack spacing={2} direction="row">
+                        <Button variant="contained" size="large"
+                         onClick={() => { aoSubmeterFormular() }}
+                        >Login </Button>
+                    </Stack>
                 </div>
             </form>
         </section>
