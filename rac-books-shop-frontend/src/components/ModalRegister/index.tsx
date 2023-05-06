@@ -5,12 +5,23 @@ import Button from '@mui/material/Button';
 
 import loginImg from './assets/login.png'
 import './ModalRegister.css'
-import { Stack } from "@mui/material";
+import { Box, Modal, Stack } from "@mui/material";
 
 interface PropsModalRegister {
     opened: boolean
     whenClose: () => void
 }
+
+const styleModal = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: "50%",
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    p: 4,
+};
 
 const ModalRegister = (props: PropsModalRegister) => {
 
@@ -23,7 +34,6 @@ const ModalRegister = (props: PropsModalRegister) => {
     const [passwordConfirmed, setPasswordConfirmed] = useState('')
 
     const aoSubmeterFormular = () => {
-        //props.preventDefault()
         const user = {
             name,
             email,
@@ -51,64 +61,69 @@ const ModalRegister = (props: PropsModalRegister) => {
     }
 
     return (
-        <AbModal
-            titulo="Register"
-            aberta={props.opened}
-            aoFechar={props.whenClose}
-        >
-            <section className="registerBody">
-                <figure>
-                    <img src={loginImg} alt="Register user icon" />
-                </figure>
-                <form onSubmit={aoSubmeterFormular}>
-                    <AbCampoTexto
-                        label="Name"
-                        value={name}
-                        onChange={setName}
-                    />
-                    <AbCampoTexto
-                        label="Email"
-                        value={email}
-                        onChange={setEmail}
-                        type="email"
-                    />
-                    <AbCampoTexto
-                        label="Address"
-                        value={address}
-                        onChange={setAddress}
-                    />
-                    <AbCampoTexto
-                        label="Complement"
-                        value={complement}
-                        onChange={setComplement}
-                    />
-                    <AbCampoTexto
-                        label="CEP"
-                        value={cep}
-                        onChange={setCep}
-                    />
-                    <AbCampoTexto
-                        label="Password"
-                        value={password}
-                        onChange={setPassword}
-                        type="password"
-                    />
-                    <AbCampoTexto
-                        label="Confirm password"
-                        value={passwordConfirmed}
-                        onChange={setPasswordConfirmed}
-                        type="password"
-                    />
-                    <div className="acoes">
-                        <Stack spacing={2} direction="row">
-                            <Button variant="contained" size="large"
-                           onClick={() => {aoSubmeterFormular()}}
-                            >Create</Button>
-                        </Stack>
-                    </div>
-                </form>
-            </section>
-        </AbModal>)
+
+        <Modal
+            open={props.opened}
+            onClose={props.whenClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description">
+            <Box sx={styleModal}>
+
+                <section className="registerBody">
+                    <figure>
+                        <img src={loginImg} alt="Register user icon" />
+                    </figure>
+                    <form onSubmit={aoSubmeterFormular}>
+                        <AbCampoTexto
+                            label="Name"
+                            value={name}
+                            onChange={setName}
+                        />
+                        <AbCampoTexto
+                            label="Email"
+                            value={email}
+                            onChange={setEmail}
+                            type="email"
+                        />
+                        <AbCampoTexto
+                            label="Address"
+                            value={address}
+                            onChange={setAddress}
+                        />
+                        <AbCampoTexto
+                            label="Complement"
+                            value={complement}
+                            onChange={setComplement}
+                        />
+                        <AbCampoTexto
+                            label="CEP"
+                            value={cep}
+                            onChange={setCep}
+                        />
+                        <AbCampoTexto
+                            label="Password"
+                            value={password}
+                            onChange={setPassword}
+                            type="password"
+                        />
+                        <AbCampoTexto
+                            label="Confirm password"
+                            value={passwordConfirmed}
+                            onChange={setPasswordConfirmed}
+                            type="password"
+                        />
+                        <div className="acoes">
+                            <Stack spacing={2} direction="row">
+                                <Button variant="contained" size="large"
+                                    onClick={() => { aoSubmeterFormular() }}
+                                >Create</Button>
+                            </Stack>
+                        </div>
+                    </form>
+                </section>
+            </Box>
+        </Modal>
+    )
 }
 
 export default ModalRegister
