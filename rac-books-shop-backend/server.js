@@ -90,6 +90,11 @@ server.get("/public/bestsellers" , (req, res) => {
     res.status(200).json(database.bestSellers)
 })
 
+server.get("/admin/orders", (req, res) => {
+    console.log("[admin] get orders")
+    res.status(200).json(database.orders)
+})
+
 server.use(router)
 
 server.listen(8000, () => {
