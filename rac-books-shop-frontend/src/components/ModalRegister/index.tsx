@@ -1,11 +1,10 @@
-import { AbBotao, AbCampoTexto, AbModal } from "ds-alurabooks"
 import { useState } from "react"
 import axios, { Axios } from "axios"
 import Button from '@mui/material/Button';
 
 import loginImg from './assets/login.png'
 import './ModalRegister.css'
-import { Box, Modal, Stack } from "@mui/material";
+import { Box, Modal, Stack, TextField } from "@mui/material";
 
 interface PropsModalRegister {
     opened: boolean
@@ -17,7 +16,6 @@ const styleModal = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "50%",
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -74,51 +72,104 @@ const ModalRegister = (props: PropsModalRegister) => {
                         <img src={loginImg} alt="Register user icon" />
                     </figure>
                     <form onSubmit={aoSubmeterFormular}>
-                        <AbCampoTexto
-                            label="Name"
-                            value={name}
-                            onChange={setName}
-                        />
-                        <AbCampoTexto
-                            label="Email"
-                            value={email}
-                            onChange={setEmail}
-                            type="email"
-                        />
-                        <AbCampoTexto
-                            label="Address"
-                            value={address}
-                            onChange={setAddress}
-                        />
-                        <AbCampoTexto
-                            label="Complement"
-                            value={complement}
-                            onChange={setComplement}
-                        />
-                        <AbCampoTexto
-                            label="CEP"
-                            value={cep}
-                            onChange={setCep}
-                        />
-                        <AbCampoTexto
-                            label="Password"
-                            value={password}
-                            onChange={setPassword}
-                            type="password"
-                        />
-                        <AbCampoTexto
-                            label="Confirm password"
-                            value={passwordConfirmed}
-                            onChange={setPasswordConfirmed}
-                            type="password"
-                        />
+
+                        <Box
+                            component="form"
+                            alignItems={"center"}
+                            sx={{ '& .MuiTextField-root': { m: 1, width: '42ch' }, }}
+                            noValidate
+                            autoComplete="off">
+
+                            <TextField
+                                required
+                                id="filled-required"
+                                label="Name"
+                                variant="filled"
+                                value={name}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setName(event.target.value);
+                                }}
+                            />
+
+                            <TextField
+                                required
+                                id="filled-required"
+                                label="Email"
+                                variant="filled"
+                                value={email}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setEmail(event.target.value);
+                                }}
+                            />
+
+                            <TextField
+                                required
+                                id="filled-required"
+                                label="Address"
+                                variant="filled"
+                                value={address}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setAddress(event.target.value);
+                                }}
+                            />
+
+                            <TextField
+                                required
+                                id="filled-required"
+                                label="Complement"
+                                variant="filled"
+                                value={complement}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setComplement(event.target.value);
+                                }}
+                            />
+
+                            <TextField
+                                required
+                                id="filled-required"
+                                label="CEP"
+                                variant="filled"
+                                value={cep}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setCep(event.target.value);
+                                }}
+                            />
+
+                            <TextField
+                                required
+                                id="filled-password-input"
+                                label="Password"
+                                type="password"
+                                autoComplete="current-password"
+                                variant="filled"
+                                value={password}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setPassword(event.target.value);
+                                }}
+                            />
+
+                            <TextField
+                                required
+                                id="filled-password-input"
+                                label="Confirm Password"
+                                type="password"
+                                autoComplete="current-password"
+                                variant="filled"
+                                value={passwordConfirmed}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setPasswordConfirmed(event.target.value);
+                                }}
+                            />
+                        </Box>
+
                         <div className="acoes">
-                            <Stack spacing={2} direction="row">
+                            <Stack alignItems={"end"} marginRight={"15%"}>
                                 <Button variant="contained" size="large"
                                     onClick={() => { aoSubmeterFormular() }}
                                 >Create</Button>
                             </Stack>
                         </div>
+
                     </form>
                 </section>
             </Box>
