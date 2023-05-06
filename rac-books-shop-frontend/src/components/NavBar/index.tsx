@@ -13,9 +13,14 @@ const NavBar = () => {
     const [modalRegisterOpened, setModalRegisterOpened] = useState(false)
     
     const token = sessionStorage.getItem("token")
-    const [userLogged, setUserLogged] = useState<boolean>(token != null && token  != undefined)
-    
+    const [userLogged, setUserLogged] = useState<boolean>(token != null && token != undefined)
+
     const navigate = useNavigate();
+    
+    const whenExecuteLogin = () => {
+        setModalLoginOpened(false)
+        setUserLogged(true)
+    }
 
     const whenExecuteLogout = () => {
         setUserLogged(false)
@@ -23,9 +28,8 @@ const NavBar = () => {
         navigate("/")
     }
 
-    const whenExecuteLogin = () => {
-        setModalLoginOpened(false)
-        setUserLogged(true)
+    const WhenExecuteMyAccount = () => {
+        navigate("/admin/account/orders")
     }
 
     return (
@@ -56,32 +60,37 @@ const NavBar = () => {
             </ul>
             <ul className="acoes">
                 {!userLogged && (<>
-                <li>
-                    <NavButton text="Login" textAltSrc="User icon" imageSrc={userImg} 
-                    onClick={() => setModalLoginOpened(true)}/>
-                    <ModalLogin 
-                        opened={modalLoginOpened}
-                        whenClose={() => setModalLoginOpened(false)}
-                        whenExecuteLogin={whenExecuteLogin}
-                    />
-                </li>
-                <li>
-                    <NavButton text="Create Account" textAltSrc="User icon" imageSrc={userImg}
-                        onClick={() => setModalRegisterOpened(true)}/>
-                    <ModalRegister 
-                        opened={modalRegisterOpened}
-                        whenClose={() => setModalRegisterOpened(false)}
-                    />
-                </li>
+                    <li>
+                        <NavButton text="Login" textAltSrc="User icon" imageSrc={userImg}
+                            onClick={() => setModalLoginOpened(true)} />
+                        <ModalLogin
+                            opened={modalLoginOpened}
+                            whenClose={() => setModalLoginOpened(false)}
+                            whenExecuteLogin={whenExecuteLogin}
+                        />
+                    </li>
+                    <li>
+                        <NavButton text="Create Account" textAltSrc="User icon" imageSrc={userImg}
+                            onClick={() => setModalRegisterOpened(true)} />
+                        <ModalRegister
+                            opened={modalRegisterOpened}
+                            whenClose={() => setModalRegisterOpened(false)}
+                        />
+                    </li>
                 </>)}
                 {userLogged && <>
                     <li>
-                        <Link to="/my-account/orders">My account</Link>
+                        <NavButton
+                            text="My Account"
+                            textAltSrc="User logo"
+                            imageSrc={userImg}
+                            onClick={WhenExecuteMyAccount}
+                        />
                     </li>
                     <li>
-                        <NavButton 
+                        <NavButton
                             text="Logout"
-                            textAltSrc="Icone representando um usuário"
+                            textAltSrc="User logo"
                             imageSrc={userImg}
                             onClick={whenExecuteLogout}
                         />
