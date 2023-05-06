@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import logo from './assets/logo.png'
 import './NavBar.css'
 import NavButton from "../NavButton"
@@ -15,8 +15,12 @@ const NavBar = () => {
     const token = sessionStorage.getItem("token")
     const [userLogged, setUserLogged] = useState<boolean>(token != null && token  != undefined)
     
-    const logout = () => {
+    const navigate = useNavigate();
 
+    const whenExecuteLogout = () => {
+        setUserLogged(false)
+        sessionStorage.removeItem("token")
+        navigate("/")
     }
 
     const whenExecuteLogin = () => {
@@ -75,7 +79,12 @@ const NavBar = () => {
                         <Link to="/my-account/orders">My account</Link>
                     </li>
                     <li>
-                        <Link to="#">Logout</Link>
+                        <NavButton 
+                            text="Logout"
+                            textAltSrc="Icone representando um usuário"
+                            imageSrc={userImg}
+                            onClick={whenExecuteLogout}
+                        />
                     </li>
                 </>}
             </ul>
