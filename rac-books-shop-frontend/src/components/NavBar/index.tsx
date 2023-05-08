@@ -9,8 +9,10 @@ import ModalLogin from "../ModalLogin"
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import React from "react"
+import { ICategory } from "../../interfaces/ICategory"
+import axios from "axios"
 
 const NavBar = () => {
 
@@ -20,6 +22,13 @@ const NavBar = () => {
 
     const token = sessionStorage.getItem("token")
     const [userLogged, setUserLogged] = useState<boolean>(token != null && token != undefined)
+
+    const [categories, setCategories] = useState<ICategory[]>([])
+
+    useEffect(() => {
+        axios.get<ICategory[]>("http://localhost:8000/public/categories")
+            .then(res => { setCategories(res.data) })
+    }, [])
 
     const navigate = useNavigate();
 
@@ -38,16 +47,6 @@ const NavBar = () => {
         navigate("/admin/account/orders")
     }
 
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-
     return (
         <nav className="ab-navbar">
             <h1 className="logo">
@@ -56,32 +55,19 @@ const NavBar = () => {
                 </Link>
             </h1>
             <ul className="navegacao">
-
-                <div>
-                    <Button
-                        id="basic-button"
-                        aria-controls={open ? 'basic-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}>
-                        Categories
-                    </Button>
-                    <Menu
-                        id="basic-menu"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                        MenuListProps={{
-                            'aria-labelledby': 'basic-button',
-                        }}
-                    >
-                        <MenuItem onClick={handleClose}>Backend</MenuItem>
-                        <MenuItem onClick={handleClose}>Frontend</MenuItem>
-                        <MenuItem onClick={handleClose}>Devops</MenuItem>
-                        <MenuItem onClick={handleClose}>Design e UX</MenuItem>
-                    </Menu>
-                </div>
+                <li>
+                    <a href="#!">Categorias</a>
+                    <ul className="submenu">
+                        {categories.map(cat => (<li key={cat.id}>
+                            <Link to={`/public/categories/${cat.slug}`}>
+                                {cat.name}
+                            </Link>
+                        </li>))}
+                    </ul>
+                </li>
             </ul>
+
+
             <ul className="acoes">
                 {!userLogged && (<>
                     <li>
