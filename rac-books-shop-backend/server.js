@@ -79,6 +79,11 @@ server.post("/public/login" , (req, res) => {
     res.status(200).json({access_token, user})
 })
 
+server.get("/public/categories", (req, res) => {
+    console.log("get categories")
+    res.status(200).json(database.categories)
+})
+
 server.get("/public/releases", (req, res) => {
     console.log("get releases")
     let databaseResult = {...database}

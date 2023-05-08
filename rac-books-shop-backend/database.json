@@ -16,23 +16,23 @@
   "categories": [
     {
       "id": 1,
-      "nome": "Backend",
-      "slug": "Backend"
+      "name": "Backend",
+      "slug": "backend"
     },
     {
       "id": 2,
-      "nome": "Frontend",
-      "slug": "Frontend"
+      "name": "Frontend",
+      "slug": "frontend"
     },
     {
       "id": 3,
-      "nome": "Devops",
-      "slug": "Devops"
+      "name": "Devops",
+      "slug": "devops"
     },
     {
       "id": 4,
-      "nome": "Design and UX",
-      "slug": "Design and UX"
+      "name": "Design and UX",
+      "slug": "design-and-UX"
     }
   ],
   "authors": [
