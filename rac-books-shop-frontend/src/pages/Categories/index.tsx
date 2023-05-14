@@ -7,10 +7,13 @@ import CategoryBooks from "../../components/CategoryBooks";
 import axios from "axios";
 import { ICategory } from "../../interfaces/ICategory";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 const Categories = () => {
 
-    const getCategoryBySlug = async (slug: string) => {
+    const [category, setCategory] = useState<ICategory>();
+
+    /*const getCategoryBySlug = async (slug: string) => {
         console.log("outro getCategoryBySlug")
         let response = await axios.get<ICategory>('http://localhost:8000/public/categories', {
           params: {
@@ -33,7 +36,7 @@ const Categories = () => {
                 <CircularProgress />
             </Box>
         </>)
-    }
+    }*/
 
     return (<section>
         <CategoryTitle text={category?.name ?? ''} />
