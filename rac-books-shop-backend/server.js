@@ -62,35 +62,50 @@ server.post('/public/register', (req, res) => {
     });
 
     const access_token = createToken({ email, password })
-    res.status(200).json({ access_token})
+    res.status(200).json({ access_token })
 })
 
-server.post("/public/login" , (req, res) => {
-    const {email, password} = req.body;
-    if(!verifyUserExist({email, password})){
+server.post("/public/login", (req, res) => {
+    const { email, password } = req.body;
+    if (!verifyUserExist({ email, password })) {
         const status = 401;
         const message = "Email/password invalid"
-        res.status(status).json({status, message})
+        res.status(status).json({ status, message })
         return
     }
-    const access_token = createToken({email, password})
-    let user = { ...userdb.users.find(user => user.email === email && user.password === password)}
+    const access_token = createToken({ email, password })
+    let user = { ...userdb.users.find(user => user.email === email && user.password === password) }
     delete user.password
-    res.status(200).json({access_token, user})
+    res.status(200).json({ access_token, user })
 })
 
 server.get("/public/categories", (req, res) => {
-    console.log("get categories")
+    const slug = req.query.slug;
+    if (slug !== null && slug !== undefined) {
+        res.status(200).json({ ...database.categories.find(category => category.slug === slug) }) 
+    }
     res.status(200).json(database.categories)
+})
+
+server.get("/public/books", (req, res) => {
+    debugger
+    console.log("req.query: " +req.query.category)
+    const id = req.query.category;
+    if (id !== null && id !== undefined) {
+        console.log("get books by id "+id)
+       let books = { ...database.books.find(book => book.category === id) }
+       res.status(200).json({books})
+    }
+    res.status(200).json(database.books)
 })
 
 server.get("/public/releases", (req, res) => {
     console.log("get releases")
-    let databaseResult = {...database}
+    let databaseResult = { ...database }
     res.status(200).json(databaseResult.releases)
 })
 
-server.get("/public/bestsellers" , (req, res) => {
+server.get("/public/bestsellers", (req, res) => {
     console.log("get best sellers")
     res.status(200).json(database.bestSellers)
 })
@@ -103,5 +118,5 @@ server.get("/admin/orders", (req, res) => {
 server.use(router)
 
 server.listen(8000, () => {
-  console.log("RAC Books Shop API Running: http://localhost:8000")
+    console.log("RAC Books Shop API Running: http://localhost:8000")
 })
