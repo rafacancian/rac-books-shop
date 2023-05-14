@@ -13,6 +13,7 @@ import { useEffect, useState } from "react"
 import React from "react"
 import { ICategory } from "../../interfaces/ICategory"
 import axios from "axios"
+import http from "../../http"
 
 const NavBar = () => {
 
@@ -26,7 +27,7 @@ const NavBar = () => {
     const [categories, setCategories] = useState<ICategory[]>([])
 
     useEffect(() => {
-        axios.get<ICategory[]>("http://localhost:8000/public/categories")
+        http.get<ICategory[]>("/public/categories")
             .then(res => { setCategories(res.data) })
     }, [])
 

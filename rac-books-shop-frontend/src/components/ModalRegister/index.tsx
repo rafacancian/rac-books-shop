@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import loginImg from './assets/login.png'
 import './ModalRegister.css'
 import { Box, Modal, Stack, TextField } from "@mui/material";
+import http from "../../http";
 
 interface PropsModalRegister {
     opened: boolean
@@ -42,13 +43,7 @@ const ModalRegister = (props: PropsModalRegister) => {
         }
         console.log("Action to register user: " + user)
 
-        axios.create({
-            baseURL: 'http://localhost:8000',
-            headers: {
-                Accept: 'application/json',
-                Content: 'application/json'
-            }
-        }).post('public/register', user)
+       http.post('public/register', user)
             .then(() => {
                 alert("User registered with success")
                 setName("")

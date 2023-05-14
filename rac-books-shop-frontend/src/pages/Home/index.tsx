@@ -9,6 +9,7 @@ import Newsletter from "../../components/Newsletter"
 import GridTags from "../../components/GridTags"
 import axios from "axios"
 import { IBook } from "../../interfaces/IBook"
+import http from "../../http"
 
 const Home = () => {
     const [search, setSearch] = useState("")
@@ -70,7 +71,7 @@ const Home = () => {
 
     useEffect(() => {
         console.log("use effect get best sellers")
-        axios.get<IBook[]>("http://localhost:8000/public/bestsellers")
+        http.get<IBook[]>("/public/bestsellers")
             .then(res => setBestSellers(res.data))
             .catch(error => console.log("Get best sellers error: " + error))
     }, [])

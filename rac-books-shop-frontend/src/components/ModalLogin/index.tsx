@@ -7,6 +7,7 @@ import imagemPrincipal from './assets/login.png'
 import './ModalLogin.css'
 import { Box, Modal, Stack, TextField } from "@mui/material";
 import React from "react";
+import http from "../../http";
 
 interface PropsModalLogin {
     opened: boolean
@@ -36,13 +37,7 @@ const ModalLogin = (props: PropsModalLogin) => {
         }
         console.log(user)
 
-        axios.create({
-            baseURL: 'http://localhost:8000',
-            headers: {
-                Accept: 'application/json',
-                Content: 'application/json'
-            }
-        }).post('public/login', user)
+       http.post('public/login', user)
             .then(response => {
                 sessionStorage.setItem('token', response.data.access_token)
                 setEmail('')

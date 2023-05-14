@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 
 import "./Orders.css"
 import { IOrder } from "../../interfaces/IOrder"
+import http from "../../http";
 
 
 const Orders = () => {
@@ -13,7 +14,7 @@ const Orders = () => {
 
     useEffect(() => {
         console.log("admin/account/ordes")
-        axios.get<IOrder[]>("http://localhost:8000/admin/account/orders")
+        http.get<IOrder[]>("/admin/account/orders")
             .then(res => setOrders(res.data))
             .catch(error => console.log("Get orders error: " + error))
     }, [])
