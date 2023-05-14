@@ -1,7 +1,16 @@
+import { IBookOption } from "./IBookOption"
+
 export interface IBook {
-    name: string
+    id: number
+    category: number
+    title: string
+    slug: string
     description: string
-    author: string
+    isbn: string
+    pageNumber: number
+    publication: string
     image: string
-    price: number
+    author: number
+    options: IBookOption[]
+    about: string
 }
