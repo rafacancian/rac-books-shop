@@ -1,5 +1,5 @@
 import { AbCampoTexto } from "ds-alurabooks"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import './Home.css'
 import Banner from "../../components/Banner"
@@ -7,12 +7,15 @@ import GridBooks from "../../components/GridBooks"
 import GridTitle from "../../components/GridTitle"
 import Newsletter from "../../components/Newsletter"
 import GridTags from "../../components/GridTags"
+import axios from "axios"
+import { IBook } from "../../interfaces/IBook"
 
 const Home = () => {
     const [search, setSearch] = useState("")
 
-    const newBooks = [
+    /*const newBooks = [
         {
+            id: 1,
             author: 'Tárcio Zemel',
             description: 'Técnicas e ferramentas que fazem a diferença nos seus estilos',
             image: '/imagens/livros/css.jpg',
@@ -20,6 +23,7 @@ const Home = () => {
             price: 29.9
         },
         {
+            id: 2,
             author: 'Sass',
             description: 'Aprendendo pré-processadores CSS',
             image: '/imagens/livros/sass.jpg',
@@ -27,6 +31,7 @@ const Home = () => {
             price: 29.9
         },
         {
+            id: 3,
             author: 'Diego Eis',
             description: 'O caminho das pedras para ser um dev Front-End',
             image: '/imagens/livros/frontend.jpg',
@@ -36,6 +41,7 @@ const Home = () => {
     ]
     const bestSellersBooks = [
         {
+            id: 4,
             author: 'Thiago da Silva Adriano',
             description: 'Melhore suas aplicações JavaScript',
             image: '/imagens/livros/typescript.jpg',
@@ -43,6 +49,7 @@ const Home = () => {
             price: 29.9
         },
         {
+            id: 5,
             author: 'Akira Hanashiro',
             description: 'A revolucionária linguagem de consulta e manipulação de dados para APIs',
             image: '/imagens/livros/graphql.jpg',
@@ -50,17 +57,27 @@ const Home = () => {
             price: 29.9
         },
         {
+            id: 6,
             author: 'Vinícius Carvalho',
             description: 'PostgreSQL',
             image: '/imagens/livros/postgre.jpg',
             name: 'PostgreSQL',
             price: 29.9
         },
-    ]
+    ]*/
+
+    const [bestSellers, setBestSellers] = useState<IBook[]>([]);
+
+    useEffect(() => {
+        console.log("use effect get best sellers")
+        axios.get<IBook[]>("http://localhost:8000/public/bestsellers")
+            .then(res => setBestSellers(res.data))
+            .catch(error => console.log("Get best sellers error: " + error))
+    }, [])
 
     return (<section className="home">
         <Banner 
-            title="The most complete IT books store?" 
+            title="The most complete IT books" 
             subtitle="Give a up in your carrear with the best IT books" >
             <form className="search">
                 <AbCampoTexto 
@@ -74,9 +91,9 @@ const Home = () => {
         </Banner>
 
         <GridTitle text="Releases"/>
-        <GridBooks books={newBooks}/>
+        <GridBooks books={bestSellers ?? []}/>
         <GridTitle text="Best Seller"/>
-        <GridBooks books={bestSellersBooks}/>
+        <GridBooks books={bestSellers ?? []}/>
         <GridTags></GridTags>
         <Newsletter />
     </section>)
