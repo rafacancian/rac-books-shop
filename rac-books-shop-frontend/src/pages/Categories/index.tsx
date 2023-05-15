@@ -7,28 +7,38 @@ import CategoryBooks from "../../components/CategoryBooks";
 import axios from "axios";
 import { ICategory } from "../../interfaces/ICategory";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import http from "../../http";
 
 const Categories = () => {
 
     const [category, setCategory] = useState<ICategory>();
+    const params = useParams()
+
+    useEffect(() => {
+        http.get<ICategory>("public/categories", {
+            params: {
+                slug: params.slug
+            }
+        }).then(response => {
+            setCategory(response.data)
+        })
+    }, [params.slug])
 
     /*const getCategoryBySlug = async (slug: string) => {
-        console.log("outro getCategoryBySlug")
-        let response = await axios.get<ICategory>('http://localhost:8000/public/categories', {
-          params: {
-            slug
-          }
+        console.log("getCategoryBySlug")
+        let response = http.get<ICategory>("public/categories", {
+            params: {
+                slug
+            }
         })
-        debugger
-        console.log("outro getCategoryBySlug result: " +response.data)
 
         const myObject: ICategory = response.data as ICategory;
         return myObject;
     }
 
-    const params = useParams()
-    const { data: category, isLoading } = useQuery(['getCategoryBySlug', params.slug], () => getCategoryBySlug(params.slug || ''))
+
+    //const { data: category, isLoading } = useQuery(['getCategoryBySlug', params.slug], () => getCategoryBySlug(params.slug || ''))
 
     if (isLoading) {
         return (<>
@@ -39,7 +49,7 @@ const Categories = () => {
     }*/
 
     return (<section>
-        <CategoryTitle text={category?.name ?? ''} />
+        <CategoryTitle title={category?.name ?? ''} />
         <CategoryBooks category={category!} />
     </section>)
 }

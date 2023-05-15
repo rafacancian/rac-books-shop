@@ -1,11 +1,11 @@
 import './CategoryTitle.css'
 
 interface CategoryTitleProps {
-    text: string
+    title: string
 }
-const CategoryTitle = ({ text } : CategoryTitleProps) => {
+const CategoryTitle = ({ title } : CategoryTitleProps) => {
 
-    return (<h1 className="CategoryTitle">{text}</h1>)
+    return (<h1 className="CategoryTitle">{title}</h1>)
 
 }
 

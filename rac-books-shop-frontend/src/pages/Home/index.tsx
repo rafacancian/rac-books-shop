@@ -77,11 +77,11 @@ const Home = () => {
     }, [])
 
     return (<section className="home">
-        <Banner 
-            title="The most complete IT books" 
+        <Banner
+            title="The most complete IT books"
             subtitle="Give a up in your carrear with the best IT books" >
             <form className="search">
-                <AbCampoTexto 
+                <AbCampoTexto
                     placeholder="What will your next read be?"
                     value={search}
                     onChange={setSearch}
@@ -91,10 +91,10 @@ const Home = () => {
             </form>
         </Banner>
 
-        <GridTitle text="Releases"/>
-        <GridBooks books={bestSellers ?? []}/>
-        <GridTitle text="Best Seller"/>
-        <GridBooks books={bestSellers ?? []}/>
+        <GridTitle text="Releases" />
+        <GridBooks books={bestSellers ?? []} />
+        <GridTitle text="Best Seller" />
+        <GridBooks books={bestSellers ?? []} />
         <GridTags></GridTags>
         <Newsletter />
     </section>)
