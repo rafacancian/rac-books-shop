@@ -34,16 +34,14 @@ server.post('/public/register', (req, res) => {
     if (verifyUserExist(email, password)) {
         const status = 401;
         const message = "User already registered";
-        res.status(status).json({ status, message });
-        return
+        return res.status(status).json({ status, message });
     }
 
     fs.readFile("./users.json", (error, data) => {
         if (error) {
             const status = 401
             const message = error
-            res.status(status).json({ status, message })
-            return
+            return res.status(status).json({ status, message })
         }
 
         const json = JSON.parse(data.toString());
@@ -54,15 +52,14 @@ server.post('/public/register', (req, res) => {
             if (error) {
                 const status = 401
                 const message = error
-                res.status(status).json({ status, message })
-                return
+                return res.status(status).json({ status, message })
             }
         });
         userdb = json;
     });
 
     const access_token = createToken({ email, password })
-    res.status(200).json({ access_token })
+    return res.status(200).json({ access_token })
 })
 
 server.post("/public/login", (req, res) => {
@@ -70,8 +67,7 @@ server.post("/public/login", (req, res) => {
     if (!verifyUserExist({ email, password })) {
         const status = 401;
         const message = "Email/password invalid"
-        res.status(status).json({ status, message })
-        return
+        return res.status(status).json({ status, message })
     }
     const access_token = createToken({ email, password })
     let user = { ...userdb.users.find(user => user.email === email && user.password === password) }
@@ -82,9 +78,9 @@ server.post("/public/login", (req, res) => {
 server.get("/public/categories", (req, res) => {
     const slug = req.query.slug;
     if (slug !== null && slug !== undefined) {
-        res.status(200).json({ ...database.categories.find(category => category.slug === slug) }) 
+        return res.status(200).json({ ...database.categories.find(category => category.slug === slug) }) 
     }
-    res.status(200).json(database.categories)
+    return res.status(200).json(database.categories)
 })
 
 server.get("/public/books", (req, res) => {
@@ -94,20 +90,20 @@ server.get("/public/books", (req, res) => {
     if (id !== null && id !== undefined) {
         console.log("get books by id "+id)
        let books = { ...database.books.find(book => book.category === id) }
-       res.status(200).json({books})
+       return res.status(200).json({books})
     }
-    res.status(200).json(database.books)
+    return res.status(200).json(database.books)
 })
 
 server.get("/public/releases", (req, res) => {
     console.log("get releases")
     let databaseResult = { ...database }
-    res.status(200).json(databaseResult.releases)
+    return res.status(200).json(databaseResult.releases)
 })
 
 server.get("/public/bestsellers", (req, res) => {
     console.log("get best sellers")
-    res.status(200).json(database.bestSellers)
+    return res.status(200).json(database.bestSellers)
 })
 
 server.get("/admin/orders", (req, res) => {
