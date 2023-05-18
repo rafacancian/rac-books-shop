@@ -1,1 +1,31 @@
-{"users":[{"id":1,"email":"cancian@gmail.com","password":"123456","name":"Rafael Cancian","address":"Rua de lisboa","complement":"Apartamento","cep":"1200-000"},{"id":2,"email":"rafael@gmail.com","password":"123456","name":"Rafael Cancian","address":"Rua de lisboa - Campolide","complement":"Apartamento T1","cep":"1200-001"},{"id":3,"email":"novo@gmail.com","password":"novo","name":"Rafael Novo","address":"novo ","complement":"novo 01","cep":"1244000"}]}
+{
+    "users": [
+        {
+            "id": 1,
+            "email": "cancian@gmail.com",
+            "password": "123456",
+            "name": "Rafael Cancian",
+            "address": "Rua de lisboa",
+            "complement": "Apartamento",
+            "cep": "1200-000"
+        },
+        {
+            "id": 2,
+            "email": "rafael@gmail.com",
+            "password": "123456",
+            "name": "Rafael Cancian",
+            "address": "Rua de lisboa - Campolide",
+            "complement": "Apartamento T1",
+            "cep": "1200-001"
+        },
+        {
+            "id": 3,
+            "email": "novo@gmail.com",
+            "password": "novo",
+            "name": "Rafael Novo",
+            "address": "novo ",
+            "complement": "novo 01",
+            "cep": "1244000"
+        }
+    ]
+}
