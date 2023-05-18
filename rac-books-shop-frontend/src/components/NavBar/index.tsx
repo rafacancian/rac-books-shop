@@ -57,7 +57,7 @@ const NavBar = () => {
             </h1>
             <ul className="navegacao">
                 <li>
-                    <a href="#!">Categorias</a>
+                    <a href="#!">Categories</a>
                     <ul className="submenu">
                         {categories.map(cat => (<li key={cat.id}>
                             <Link to={`/public/categories/${cat.slug}`}>

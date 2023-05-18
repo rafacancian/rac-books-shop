@@ -11,6 +11,8 @@ export interface IBook {
     publication: string
     image: string
     author: number
+    release : boolean
+    bestseller : boolean
     options: IBookOption[]
     about: string
 }
