@@ -1,0 +1,15 @@
+.container-error {
+    margin: 200px 0px;
+}
+.container-error h2 {
+    font-weight: 700;
+    font-size: 20px;
+    color: #002F52;
+    text-align: center;
+}
+.container-error p {
+    text-align: justify;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.85);
+    text-align: center;
+}
