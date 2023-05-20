@@ -1,0 +1,16 @@
+.bloco-sobre {
+    padding: 0% 20%;
+    margin-bottom: 40px;
+}
+.bloco-sobre h2 {
+    font-weight: 700;
+    font-size: 20px;
+    color: #002F52;
+
+
+}
+.bloco-sobre p {
+    text-align: justify;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.85);
+}

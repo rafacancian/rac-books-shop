@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { IBook } from "../../interfaces/IBook"
 import Button from '@mui/material/Button';
 import { AbCard } from "ds-alurabooks";
+import { useNavigate } from 'react-router-dom';
 
 interface GridBooksProps {
     books: IBook[]
@@ -11,6 +12,9 @@ interface GridBooksProps {
 const GridBooks = ({ books }: GridBooksProps) => {
 
     const [selectedBook, setSelectedBook] = useState<IBook>()
+    
+    let navigate = useNavigate();
+    const handleOnClick = (slug: string) => navigate('/book/' + slug);
 
     useEffect(() => {
         if (books?.length) {
@@ -50,7 +54,7 @@ const GridBooks = ({ books }: GridBooksProps) => {
                             <strong>{Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(minimumPrice)}</strong>
                         </div>
                         <div>
-                            <Button variant="contained" size="large">Buy</Button>
+                            <Button variant="contained" size="large" onClick={() => { handleOnClick(selectedBook!.slug) }}>More details</Button>
                         </div>
                     </footer>
                 </div>
