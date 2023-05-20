@@ -20,18 +20,18 @@ const Book = () => {
     const params = useParams()
     let [option, setOption] = useState<AbGrupoOpcao>()
 
-    const { data: book, isLoading, error} = useQuery<IBook | null, AxiosError>(["bookBySlug", params.slug], () => getBookBySlug(params.slug || ""))
-    if(isLoading || !book){
+    const { data: book, isLoading, error } = useQuery<IBook | null, AxiosError>(["bookBySlug", params.slug], () => getBookBySlug(params.slug || ""))
+    if (isLoading || !book) {
         <Loader></Loader>
     }
-   
+
     debugger
     if (error) {
-        console.log("Error: " +error.message)
+        console.log("Error: " + error.message)
         return <GridError message="Error" subMessage="Maintenance application. Try again later" />
     }
 
-    if(book === null) {
+    if (book === null) {
         return <GridError message="Info" subMessage="Book not found. Try again" />
     }
 
@@ -91,7 +91,6 @@ const Book = () => {
                     </div>
                 </div>
                 <div>
-
                     <BookDescription title={book?.title} description={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."} />
                 </div>
             </div>
