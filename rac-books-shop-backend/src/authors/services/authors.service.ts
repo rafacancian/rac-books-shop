@@ -11,7 +11,6 @@ export class AuthorsService {
   }
   
   async getById(id: number) {
-    console.log("Author getById " + id)
     const response = await http.get<Author>(`/authors/${id}`);
     return response.data;
   }
