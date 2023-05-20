@@ -4,9 +4,9 @@ const jsonServer = require('json-server')
 const jwt = require('jsonwebtoken')
 
 const server = jsonServer.create()
-const router = jsonServer.router('./database.json')
-let userdb = JSON.parse(fs.readFileSync('./users.json', 'UTF-8'))
-let database = JSON.parse(fs.readFileSync("./database.json", "UTF-8"))
+const router = jsonServer.router('./api/database.json')
+let userdb = JSON.parse(fs.readFileSync('./api/users.json', 'UTF-8'))
+let database = JSON.parse(fs.readFileSync("./api/database.json", "UTF-8"))
 
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(bodyParser.json())
