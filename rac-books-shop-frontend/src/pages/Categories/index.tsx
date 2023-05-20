@@ -5,6 +5,7 @@ import CategoryBooks from "../../components/CategoryBooks";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/Loader";
 import { getCategoryBySlud } from "../../http";
+import GridError from "../../components/GridError";
 
 const Categories = () => {
 
@@ -20,12 +21,16 @@ const Categories = () => {
     }, [params.slug])*/
 
     const params = useParams()
-    const { data: category, isLoading } = useQuery(["categoryBySlug", params.slug], () => getCategoryBySlud(params.slug || ""))
+    const { data: category, isLoading, error } = useQuery(["categoryBySlug", params.slug], () => getCategoryBySlud(params.slug || ""))
 
     if (isLoading) {
         return (<>
             <Loader />
         </>)
+    }
+
+    if (error) {
+        return <GridError message="Error" subMessage="Maintenance application. Try again later" />
     }
 
     return (<section>

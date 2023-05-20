@@ -49,12 +49,13 @@ export const getBooksByBestSellers = async () => {
 }
 
 
-export const getBookBySlug = async (slug : string) => {
-    const response = await http.get<IBook[]>("/books" , {
+export const getBookBySlug = async (slug: string) => {
+    const response = await http.get<IBook[]>("/books", {
         params: {
             slug: slug
         }
     })
-    debugger
-    return response.data[0]
+    if (response.data)
+        return response.data[0]
+    return null
 }

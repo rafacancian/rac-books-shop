@@ -10,6 +10,8 @@ import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import { getBooksByBestSellers, getBooksByRelease } from "../../http"
+import Loader from '../../components/Loader'
+import GridError from '../../components/GridError'
 
 const Home = () => {
 
@@ -23,8 +25,18 @@ const Home = () => {
     }, [])*/
 
     const params = useParams()
-    const { data: booksReleases, isLoading } = useQuery(["booksByRelease", params.release], () => getBooksByRelease())
-    const { data: booksBestSellers } = useQuery(["booksByBestSeller", params.bestseller], () => getBooksByBestSellers())
+    const { data: booksReleases, isLoading: isLoadingReleases, error: errorReleases } = useQuery(["booksByRelease", params.release], () => getBooksByRelease())
+    const { data: booksBestSellers, isLoading: isLoadingBestSellers, error: errorBestSelles } = useQuery(["booksByBestSeller", params.bestseller], () => getBooksByBestSellers())
+
+    if (isLoadingReleases || isLoadingBestSellers) {
+        return (<>
+            <Loader />
+        </>)
+    }
+
+    if (errorReleases || errorBestSelles) {
+        return <GridError message="Error" subMessage="Maintenance application. Try again later" />
+    }
 
     return (
         <section className="home">

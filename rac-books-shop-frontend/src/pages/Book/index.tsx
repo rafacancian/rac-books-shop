@@ -1,6 +1,6 @@
 
 
-import { AbBotao, AbGrupoOpcao, AbGrupoOpcoes, AbInputQuantidade } from "ds-alurabooks"
+import { AbGrupoOpcao, AbGrupoOpcoes, AbInputQuantidade } from "ds-alurabooks"
 import { useState } from "react"
 import CategoryTitle from '../../components/CategoryTitle'
 
@@ -11,18 +11,31 @@ import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import { getBookBySlug } from "../../http"
 import Loader from "../../components/Loader"
+import GridError from "../../components/GridError"
+import { IBook } from "../../interfaces/IBook"
+import { AxiosError } from "axios"
 
 const Book = () => {
 
     const params = useParams()
-    
-    const { data: book, isLoading} = useQuery(["bookBySlug", params.slug], () => getBookBySlug(params.slug || ""))
+    let [option, setOption] = useState<AbGrupoOpcao>()
+
+    const { data: book, isLoading, error} = useQuery<IBook | null, AxiosError>(["bookBySlug", params.slug], () => getBookBySlug(params.slug || ""))
     if(isLoading || !book){
         <Loader></Loader>
     }
-    console.log(book)
+   
+    debugger
+    if (error) {
+        console.log("Error: " +error.message)
+        return <GridError message="Error" subMessage="Maintenance application. Try again later" />
+    }
 
-    const [option, setOption] = useState<AbGrupoOpcao>()
+    if(book === null) {
+        return <GridError message="Info" subMessage="Book not found. Try again" />
+    }
+
+    //const [option, setOption] = useState<AbGrupoOpcao>()
     //const [options2, setOption2] = useState<AbGrupoOpcao[]>()
     //setOption2(book?.options)
 

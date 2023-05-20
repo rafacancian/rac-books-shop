@@ -1,36 +1,41 @@
-
 .livro-detalhe .container {
     display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0% 20%;
+    align-items: center;
+    justify-content: center;
+    padding: 0% 20%;
 }
 
 .livro-detalhe .container .detalhes {
     flex-grow: 1;
     padding-right: 24px;
 }
+
 .livro-detalhe .container .detalhes {
     flex-grow: 1;
     padding-right: 24px;
 }
+
 .livro-detalhe .container .detalhes h2 {
     font-size: 24px;
     color: #002F52;
 }
+
 .livro-detalhe .container .detalhes h3 {
     font-size: 16px;
     color: #002F52;
 }
+
 .livro-detalhe .container .detalhes p {
     font-size: 14px;
     color: rgba(0, 0, 0, 0.85);
 }
+
 .livro-detalhe .container .detalhes p strong {
     font-weight: 700;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.54);
 }
+
 .livro-detalhe .container .detalhes .opcoes {
     display: flex;
     justify-content: flex-start;
