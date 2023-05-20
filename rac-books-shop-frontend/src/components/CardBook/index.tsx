@@ -1,6 +1,6 @@
 import './CardBook.css'
 
-import {useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { IBook } from "../../interfaces/IBook"
 import { Button } from "@mui/material"
 

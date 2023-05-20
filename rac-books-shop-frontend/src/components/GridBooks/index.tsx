@@ -12,7 +12,7 @@ interface GridBooksProps {
 const GridBooks = ({ books }: GridBooksProps) => {
 
     const [selectedBook, setSelectedBook] = useState<IBook>()
-    
+
     let navigate = useNavigate();
     const handleOnClick = (slug: string) => navigate('/book/' + slug);
 
@@ -61,7 +61,6 @@ const GridBooks = ({ books }: GridBooksProps) => {
             </AbCard>
         </section>
     )
-
 }
 
 export default GridBooks
