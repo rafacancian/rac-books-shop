@@ -8,6 +8,39 @@ type Category {
   slug: String!
 }
 
+type Option {
+  id: Int!
+  title: String!
+  price: Float!
+  formats: [String!]
+}
+
+type Book {
+  id: Int!
+  category: Int!
+  title: String!
+  slug: String!
+  description: String!
+  isbn: String!
+  pageNumber: Float!
+  publication: String!
+  image: String!
+  author: Int!
+  release: Boolean!
+  bestseller: Boolean!
+  options: [Option!]!
+  about: String!
+}
+
+type Author {
+  id: Int!
+  name: String!
+  description: String!
+}
+
 type Query {
   categories: [Category!]!
+  authors: [Author!]!
+  books(title: String, categoryId: Int): [Book!]!
+  book(slug: String!): Book!
 }

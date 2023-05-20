@@ -3,6 +3,8 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { CategoriesModule } from './categories/categories.module';
+import { BooksModule } from './books/books.module';
+import { AuthorsModule } from './authors/authors.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { CategoriesModule } from './categories/categories.module';
       },
     }),
     CategoriesModule,
+    AuthorsModule,
+    BooksModule,
   ],
 })
 export class AppModule {}

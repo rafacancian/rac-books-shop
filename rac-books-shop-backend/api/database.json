@@ -534,7 +534,7 @@
         {
           "id": 1,
           "title": "E-book",
-          "price": 29,
+          "price": 29.9,
           "formats": [
             ".pdf",
             ".pub",
@@ -554,7 +554,7 @@
         {
           "id": 3,
           "title": "E-book + Impresso",
-          "prices": 59.9,
+          "price": 59.9,
           "formats": [
             ".pdf",
             ".pub",
@@ -581,7 +581,7 @@
         {
           "id": 1,
           "title": "E-book",
-          "price": 29,
+          "price": 29.9,
           "formats": [
             ".pdf",
             ".pub",
@@ -601,7 +601,7 @@
         {
           "id": 3,
           "title": "E-book + Impresso",
-          "prices": 59.9,
+          "price": 59.9,
           "formats": [
             ".pdf",
             ".pub",
@@ -628,7 +628,7 @@
         {
           "id": 1,
           "title": "E-book",
-          "price": 29,
+          "price": 29.9,
           "formats": [
             ".pdf",
             ".pub",
@@ -648,7 +648,7 @@
         {
           "id": 3,
           "title": "E-book + Impresso",
-          "prices": 59.9,
+          "price": 59.9,
           "formats": [
             ".pdf",
             ".pub",
@@ -674,7 +674,7 @@
         {
           "id": 1,
           "title": "E-book",
-          "price": 29,
+          "price": 29.9,
           "formats": [
             ".pdf",
             ".pub",
@@ -694,7 +694,7 @@
         {
           "id": 3,
           "title": "E-book + Impresso",
-          "prices": 59.9,
+          "price": 59.9,
           "formats": [
             ".pdf",
             ".pub",
