@@ -6,3 +6,17 @@
     max-width: 80%;
     margin: 24px auto;
 }
+
+.search-form {
+    max-width: 70%;
+    justify-content: center;
+    gap: 10px;
+    margin: 50px auto;
+    text-align: center;
+    display: flex;
+    text-align: center;
+}
+
+.search-textfield {
+    width: 30%;
+}
