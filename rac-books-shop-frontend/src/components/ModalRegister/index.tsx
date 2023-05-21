@@ -1,11 +1,10 @@
 import { useState } from "react"
-import axios, { Axios } from "axios"
 import Button from '@mui/material/Button';
 
 import loginImg from './assets/login.png'
 import './ModalRegister.css'
 import { Box, Modal, Stack, TextField } from "@mui/material";
-import http from "../../http";
+import { http } from "../../api/axios/http";
 
 interface PropsModalRegister {
     opened: boolean

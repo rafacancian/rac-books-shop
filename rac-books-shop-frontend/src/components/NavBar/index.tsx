@@ -5,15 +5,9 @@ import NavButton from "../NavButton"
 import userImg from './assets/usuario.svg'
 import ModalRegister from "../ModalRegister"
 import ModalLogin from "../ModalLogin"
-
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import { useEffect, useState } from "react"
-import React from "react"
 import { ICategory } from "../../interfaces/ICategory"
-import axios from "axios"
-import http from "../../http"
+import { http } from "../../api/axios/http"
 
 const NavBar = () => {
 

@@ -1,16 +1,6 @@
-import axios from "axios";
-import { ICategory } from "../interfaces/ICategory";
-import { IBook } from "../interfaces/IBook";
-
-const http = axios.create({
-    baseURL: "http://localhost:8000",
-    headers: {
-        Accept: "application/json",
-        Content: "application/json"
-    }
-})
-
-export default http
+import { IBook } from "../../interfaces/IBook"
+import { ICategory } from "../../interfaces/ICategory"
+import { http } from "./http"
 
 export const getCategoryBySlud = async (slug: string) => {
     const response = await http.get<ICategory>("public/categories", {

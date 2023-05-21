@@ -9,9 +9,9 @@ import { AbCampoTexto } from "ds-alurabooks"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
-import { getBooksByBestSellers, getBooksByRelease } from "../../http"
 import Loader from '../../components/Loader'
 import GridError from '../../components/GridError'
+import { getBooksByBestSellers, getBooksByRelease } from '../../api/axios/hooks'
 
 const Home = () => {
 

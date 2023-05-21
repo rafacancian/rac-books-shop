@@ -9,11 +9,11 @@ import { Button } from "@mui/material"
 import BookDescription from "../../components/BookDescription"
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
-import { getBookBySlug } from "../../http"
 import Loader from "../../components/Loader"
 import GridError from "../../components/GridError"
 import { IBook } from "../../interfaces/IBook"
 import { AxiosError } from "axios"
+import { getBookBySlug } from "../../api/axios/hooks"
 
 const Book = () => {
 

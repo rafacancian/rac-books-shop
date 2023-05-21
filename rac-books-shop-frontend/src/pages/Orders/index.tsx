@@ -1,11 +1,9 @@
 import axios from "axios"
 import Button from '@mui/material/Button';
 import { useEffect, useState } from "react"
-
 import "./Orders.css"
 import { IOrder } from "../../interfaces/IOrder"
-import http from "../../http";
-
+import { http } from "../../api/axios/http";
 
 const Orders = () => {
 

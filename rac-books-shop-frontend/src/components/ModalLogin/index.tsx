@@ -1,13 +1,12 @@
 
 import { useState } from "react"
-import axios from "axios";
 import Button from '@mui/material/Button';
 import imagemPrincipal from './assets/login.png'
 
 import './ModalLogin.css'
 import { Box, Modal, Stack, TextField } from "@mui/material";
 import React from "react";
-import http from "../../http";
+import { http } from "../../api/axios/http";
 
 interface PropsModalLogin {
     opened: boolean

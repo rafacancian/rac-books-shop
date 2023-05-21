@@ -4,8 +4,8 @@ import CategoryTitle from "../../components/CategoryTitle";
 import CategoryBooks from "../../components/CategoryBooks";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../components/Loader";
-import { getCategoryBySlud } from "../../http";
 import GridError from "../../components/GridError";
+import { getCategoryBySlud } from "../../api/axios/hooks";
 
 const Categories = () => {
 
