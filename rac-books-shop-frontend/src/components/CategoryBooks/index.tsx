@@ -5,7 +5,7 @@ import { ICategory } from '../../interfaces/ICategory'
 import { useState } from 'react'
 import { TextField } from '@mui/material'
 import { GetBooksByCategory } from '../../api/graphql/hooks'
-import { booksVar } from '../../api/graphql/state'
+import { booksFilterVar, booksVar } from '../../api/graphql/state'
 import { useReactiveVar } from '@apollo/client'
 
 interface CategoryBooksProps {
@@ -19,7 +19,11 @@ const CategoryBooks = ({ category }: CategoryBooksProps) => {
   const [search, setSearch] = useState("");
 
   const books =  useReactiveVar(booksVar);
-  GetBooksByCategory(category, search);
+  GetBooksByCategory(search);
+
+  booksFilterVar({
+    category : category
+  })
 
   return (
     <section >
