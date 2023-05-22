@@ -5,6 +5,8 @@ import { ICategory } from '../../interfaces/ICategory'
 import { useState } from 'react'
 import { TextField } from '@mui/material'
 import { GetBooksByCategory } from '../../api/graphql/hooks'
+import { booksVar } from '../../api/graphql/state'
+import { useReactiveVar } from '@apollo/client'
 
 interface CategoryBooksProps {
   category: ICategory
@@ -16,7 +18,8 @@ const CategoryBooks = ({ category }: CategoryBooksProps) => {
 
   const [search, setSearch] = useState("");
 
-  const { data } = GetBooksByCategory(category, search);
+  const books =  useReactiveVar(booksVar);
+  GetBooksByCategory(category, search);
 
   return (
     <section >
@@ -30,7 +33,7 @@ const CategoryBooks = ({ category }: CategoryBooksProps) => {
         />
       </form>
       <div className="books">
-        {data?.books.map(book => <CardBook book={book} key={book.id} />)}
+        {books.map(book => <CardBook book={book} key={book.id} />)}
       </div>
     </section>
   )
