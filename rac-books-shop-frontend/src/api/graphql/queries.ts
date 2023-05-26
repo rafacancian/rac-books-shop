@@ -14,3 +14,22 @@ export const GET_BOOKS_BY_CATEGORY = gql`
       }   
     }
   `
+
+export const GET_SHOPPING_CART = gql`
+    query getShoppingCart {
+      shoppingCart {
+        total,
+        itens {
+          quantity,
+          option {
+            price
+          }, 
+          book {
+            title,
+            description,
+            image
+          }
+        } 
+      }
+    }
+`
