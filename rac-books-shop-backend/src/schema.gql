@@ -40,9 +40,9 @@ type Author {
 }
 
 type ShoppingCartItem {
-  quantity: Float!
   bookId: Float!
   optionId: Float!
+  quantity: Float!
   option: Option!
   book: Book!
 }
