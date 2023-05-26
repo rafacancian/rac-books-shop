@@ -25,11 +25,12 @@ type Book {
   pageNumber: Float!
   publication: String!
   image: String!
-  author: Int!
+  authorId: Int!
   release: Boolean!
   bestseller: Boolean!
   options: [Option!]!
   about: String!
+  author: Author!
 }
 
 type Author {
@@ -38,9 +39,34 @@ type Author {
   description: String!
 }
 
+type ShoppingCartItem {
+  quantity: Float!
+  bookId: Float!
+  optionId: Float!
+  option: Option!
+  book: Book!
+}
+
+type ShoppingCart {
+  total: Float!
+  itens: [ShoppingCartItem!]!
+}
+
 type Query {
   categories: [Category!]!
   authors: [Author!]!
   books(title: String, categoryId: Int): [Book!]!
   book(slug: String!): Book!
+  shoppingCart: ShoppingCart!
+}
+
+type Mutation {
+  adicionarItem(item: ShoppingCartItemInput!): Boolean!
+  removerItem(item: ShoppingCartItemInput!): Boolean!
+}
+
+input ShoppingCartItemInput {
+  bookId: Float!
+  optionId: Float!
+  quantity: Float
 }

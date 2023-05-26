@@ -32,7 +32,7 @@ export class Book {
   image: string;
   
   @Field((type) => Int)
-  author: number;
+  authorId: number;
 
   @Field((type) => Boolean)
   release: boolean;

@@ -5,6 +5,8 @@ import { join } from 'path';
 import { CategoriesModule } from './categories/categories.module';
 import { BooksModule } from './books/books.module';
 import { AuthorsModule } from './authors/authors.module';
+import { ShoppingCart } from './shoppingcart/models/shoppingcart.model';
+import { ShoppingCartModule } from './shoppingcart/shoppingcart.module';
 
 @Module({
   imports: [
@@ -19,6 +21,7 @@ import { AuthorsModule } from './authors/authors.module';
     CategoriesModule,
     AuthorsModule,
     BooksModule,
+    ShoppingCartModule
   ],
 })
 export class AppModule {}

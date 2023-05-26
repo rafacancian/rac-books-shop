@@ -704,5 +704,71 @@
       ],
       "about": "Utilizando banco de dados com PostgreSQL"
     }
+  ],
+
+  "shoppingCart": [
+    {
+      "id": 1,
+      "itens": [
+        {
+          "bookId": 4,
+          "optionId": 1,
+          "quantity": 1,
+           "option": {
+            "id": 1,
+            "title": "E-book",
+            "price": 29.9,
+            "formats": [
+              ".pdf",
+              ".pub",
+              ".mob"
+            ]
+          },
+          "book": {
+            "id": 4,
+            "categoriaId": 3,
+            "title": "Bootstrap 4",
+            "slug": "bootstrap-4",
+            "description": "Conheça a biblioteca front-end mais utilizada no mundo",
+            "isbn": "978-85-94188-60-1",
+            "pageNumber": 172,
+            "publication": "2018-05-01",
+            "image": "https://raw.githubusercontent.com/viniciosneves/alurabooks/curso-novo/public/imagens/livros/bootstrap4.png",
+            "authorId": 2,
+            "release" : false,
+            "bestseller" : false,
+            "options": [
+              {
+                "id": 1,
+                "title": "E-book",
+                "price": 29.9,
+                "formats": [
+                  ".pdf",
+                  ".pub",
+                  ".mob"
+                ]
+              },
+              {
+                "id": 2,
+                "title": "Impresso",
+                "price": 39.9
+              },
+              {
+                "id": 3,
+                "title": "E-book + Impresso",
+                "price": 59.9,
+                "formats": [
+                  ".pdf",
+                  ".pub",
+                  ".mob"
+                ]
+              }
+            ],
+            "about": "Fazer um site elegante nunca foi tão fácil, mesmo para quem não sabe escrever uma linha de CSS e, muito menos, entende como harmonizar cores, balancear elementos e tipografia. O Bootstrap é, resumidamente, um grande arquivo CSS com uma excelente documentação, que possui dezenas e dezenas de componentes prontos. No começo, foi criado pelo Twitter para servir como um guia de estilos em CSS da empresa; hoje, é a biblioteca mais famosa e utilizada no mundo."
+          }
+        }
+      ],
+      "total": 89.8
+    }
   ]
 }
