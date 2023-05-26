@@ -4,17 +4,20 @@ import './App.css';
 import MyRoutes from './routes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ApolloClientConfig from './components/Providers/ApolloClientConfig';
+import ShoppingCartProvider from './components/ContextApi';
 
 const queryClient = new QueryClient()
 
 function App() {
   return (
     <ApolloClientConfig>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <MyRoutes />
-        </BrowserRouter>
-      </QueryClientProvider>
+      <ShoppingCartProvider>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <MyRoutes />
+          </BrowserRouter>
+        </QueryClientProvider>
+      </ShoppingCartProvider>
     </ApolloClientConfig>
   );
 }

@@ -4,19 +4,19 @@ import { AbBotao } from "ds-alurabooks"
 
 import "./ShoppingCart.css"
 import ShoppingCartItem from "../ShoppintCartItem"
-import { GetShoppingCart } from "../../api/graphql/hooks"
+import { useShoppingCartContext } from "../../components/ContextApi"
 
 const ShoppingCart = () => {
 
-    const { data, loading } = GetShoppingCart()
-
+    //const { data, loading } = GetShoppingCart()
+    const { shoppingCart } = useShoppingCartContext()
     return (
         <section className="pagina-carrinho">
             <GridTitle text="My Shopping cart" />
             <div className="conteudo">
                 <h4>Itens</h4>
                 <div className="itens">
-                    {data?.shoppingCart?.itens.map((item, index) =>
+                    {shoppingCart?.itens.map((item, index) =>
                         <ShoppingCartItem key={index} item={item} />)
                     }
                 </div>
@@ -27,9 +27,9 @@ const ShoppingCart = () => {
                     <ul>
                         <li>Total</li>
                         <li>
-                            <strong>R$0,00</strong></li>
+                            <strong>{shoppingCart?.total || "R$0,00"}</strong></li>
                         <li>
-                            <AbBotao texto="Finalize shopping" />
+                            <AbBotao texto="Finalize order" />
                         </li>
                     </ul>
                 </footer>
