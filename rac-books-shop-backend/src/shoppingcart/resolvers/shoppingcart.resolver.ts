@@ -33,13 +33,13 @@ export class ShoppingCartResolver {
   }
 
   @Mutation((returns) => Boolean)
-  async adicionarItem(@Args('item') item: ShoppingCartItemInput) {
+  async addItem(@Args('item') item: ShoppingCartItemInput) {
     await this.shoppingCartService.add(item);
     return true;
   }
 
   @Mutation((returns) => Boolean)
-  async removerItem(@Args('item') item: ShoppingCartItemInput) {
+  async removeItem(@Args('item') item: ShoppingCartItemInput) {
     await this.shoppingCartService.remove(item);
     return true;
   }

@@ -39,7 +39,6 @@ export class ShoppingCartService {
 
   async add(item: ShoppingCartItemInput) {
     const shoppingCart = await this.getShoppingCart();
-
     if (!Number.isInteger(item.quantity)) {
       item.quantity = 1;
     }
@@ -56,7 +55,7 @@ export class ShoppingCartService {
         quantity: item.quantity,
       });
     }
-    await http.put('shoppint-cart/1', shoppingCart);
+    await http.put('shoppingcart/1', shoppingCart);
   }
 
   async remove(item: ShoppingCartItemInput) {
@@ -67,7 +66,7 @@ export class ShoppingCartService {
     );
     if (idx >= 0) {
       shoppingCart.itens.splice(idx, 1);
-      await http.put('shoppint-cart/1', shoppingCart);
+      await http.put('shoppingcart/1', shoppingCart);
     }
   }
 }

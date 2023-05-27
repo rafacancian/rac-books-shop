@@ -4,13 +4,13 @@
       "id": 89019041,
       "orderDate": "2023-05-01",
       "deliveryDate": "2023-05-05",
-      "total": 30.90
+      "total": 30.9
     },
     {
       "id": 89019963,
       "orderDate": "2023-05-02",
       "deliveryDate": "2023-05-06",
-      "total": 69.90
+      "total": 69.9
     }
   ],
   "categories": [
@@ -517,7 +517,8 @@
         }
       ],
       "about": "Desenvolvido e mantido pela Microsoft, o TypeScript é um pré-processador open source de códigos JavaScript que auxilia na escrita de códigos, desde os mais simples até os mais complexos, utilizando tipagem de dados e os princípios da Orientação a Objetos para o desenvolvimento de aplicações front-end, back-end e mobile."
-    },{
+    },
+    {
       "id": 12,
       "category": 3,
       "title": "Sass",
@@ -657,7 +658,8 @@
         }
       ],
       "about": "A revolucionária linguagem de consulta e manipulação de dados para APIs"
-    },{
+    },
+    {
       "id": 15,
       "category": 1,
       "title": "Guia PostgreSQL",
@@ -705,67 +707,34 @@
       "about": "Utilizando banco de dados com PostgreSQL"
     }
   ],
-
   "shoppingCart": [
     {
       "id": 1,
       "itens": [
         {
+          "bookId": 1,
+          "optionId": 1,
+          "quantity": 1
+        },
+        {
+          "bookId": 2,
+          "optionId": 1,
+          "quantity": 1
+        },
+        {
+          "bookId": 3,
+          "optionId": 1,
+          "quantity": 1
+        },
+        {
           "bookId": 4,
           "optionId": 1,
-          "quantity": 1,
-           "option": {
-            "id": 1,
-            "title": "E-book",
-            "price": 29.9,
-            "formats": [
-              ".pdf",
-              ".pub",
-              ".mob"
-            ]
-          },
-          "book": {
-            "id": 4,
-            "categoriaId": 3,
-            "title": "Bootstrap 4",
-            "slug": "bootstrap-4",
-            "description": "Conheça a biblioteca front-end mais utilizada no mundo",
-            "isbn": "978-85-94188-60-1",
-            "pageNumber": 172,
-            "publication": "2018-05-01",
-            "image": "https://raw.githubusercontent.com/viniciosneves/alurabooks/curso-novo/public/imagens/livros/bootstrap4.png",
-            "authorId": 2,
-            "release" : false,
-            "bestseller" : false,
-            "options": [
-              {
-                "id": 1,
-                "title": "E-book",
-                "price": 29.9,
-                "formats": [
-                  ".pdf",
-                  ".pub",
-                  ".mob"
-                ]
-              },
-              {
-                "id": 2,
-                "title": "Impresso",
-                "price": 39.9
-              },
-              {
-                "id": 3,
-                "title": "E-book + Impresso",
-                "price": 59.9,
-                "formats": [
-                  ".pdf",
-                  ".pub",
-                  ".mob"
-                ]
-              }
-            ],
-            "about": "Fazer um site elegante nunca foi tão fácil, mesmo para quem não sabe escrever uma linha de CSS e, muito menos, entende como harmonizar cores, balancear elementos e tipografia. O Bootstrap é, resumidamente, um grande arquivo CSS com uma excelente documentação, que possui dezenas e dezenas de componentes prontos. No começo, foi criado pelo Twitter para servir como um guia de estilos em CSS da empresa; hoje, é a biblioteca mais famosa e utilizada no mundo."
-          }
+          "quantity": 1
+        },
+        {
+          "bookId": 6,
+          "optionId": 1,
+          "quantity": 1
         }
       ],
       "total": 89.8

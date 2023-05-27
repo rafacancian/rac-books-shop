@@ -48,6 +48,7 @@ type ShoppingCartItem {
 }
 
 type ShoppingCart {
+  id: Float!
   total: Float!
   itens: [ShoppingCartItem!]!
 }
@@ -61,8 +62,8 @@ type Query {
 }
 
 type Mutation {
-  adicionarItem(item: ShoppingCartItemInput!): Boolean!
-  removerItem(item: ShoppingCartItemInput!): Boolean!
+  addItem(item: ShoppingCartItemInput!): Boolean!
+  removeItem(item: ShoppingCartItemInput!): Boolean!
 }
 
 input ShoppingCartItemInput {

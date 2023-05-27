@@ -77,7 +77,6 @@ server.post("/public/login", (req, res) => {
 
 server.get("/public/categories", (req, res) => {
     const slug = req.query.slug;
-    console.log("slug="+slug)
     if (slug !== null && slug !== undefined) {
         return res.status(200).json({ ...database.categories.find(category => category.slug === slug) }) 
     }
@@ -94,18 +93,15 @@ server.get("/public/books", (req, res) => {
 })
 
 server.get("/public/releases", (req, res) => {
-    console.log("get releases")
     let databaseResult = { ...database }
     return res.status(200).json(databaseResult.releases)
 })
 
 server.get("/public/bestsellers", (req, res) => {
-    console.log("get best sellers")
     return res.status(200).json(database.bestSellers)
 })
 
 server.get("/admin/orders", (req, res) => {
-    console.log("[admin] get orders")
     res.status(200).json(database.orders)
 })
 
