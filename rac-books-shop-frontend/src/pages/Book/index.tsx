@@ -14,18 +14,20 @@ import GridError from "../../components/GridError"
 import { IBook } from "../../interfaces/IBook"
 import { AxiosError } from "axios"
 import { getBookBySlug } from "../../api/axios/hooks"
+import { useShoppingCartContext } from "../../components/ContextApi"
 
 const Book = () => {
 
     const params = useParams()
     let [option, setOption] = useState<AbGrupoOpcao>()
+    const [quantity, setQuantity] = useState(1)
+    const { addItemFunction } = useShoppingCartContext()
 
     const { data: book, isLoading, error } = useQuery<IBook | null, AxiosError>(["bookBySlug", params.slug], () => getBookBySlug(params.slug || ""))
     if (isLoading || !book) {
         <Loader></Loader>
     }
 
-    debugger
     if (error) {
         console.log("Error: " + error.message)
         return <GridError message="Error" subMessage="Maintenance application. Try again later" />
@@ -58,6 +60,22 @@ const Book = () => {
         }
     ]
 
+    function addBookToShoppingCart(): void {
+        debugger
+        if (!book) {
+            return
+        }
+        const optionSelected = book.options.find(op => op.id === option?.id)
+        if (!optionSelected) {
+            return
+        }
+        addItemFunction({
+            book,
+            quantity,
+            option: optionSelected
+        })
+    }
+
     return (
         <section className="livro-detalhe">
             <CategoryTitle title="Details about the book" />
@@ -82,10 +100,10 @@ const Book = () => {
                         <p><strong>*You will keep updated about the future releases of the book</strong></p>
                         <footer>
                             <div className="qtdContainer">
-                                <AbInputQuantidade />
+                                <AbInputQuantidade onChange={setQuantity} />
                             </div>
                             <div>
-                                <Button variant="contained" size="large">Buy</Button>
+                                <Button variant="contained" size="large" onClick={addBookToShoppingCart}>Buy</Button>
                             </div>
                         </footer>
                     </div>

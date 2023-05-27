@@ -33,3 +33,9 @@ export const GET_SHOPPING_CART = gql`
       }
     }
 `
+
+export const SHOPPING_CART_ADD_ITEM = gql`
+  mutation addItem($item: ShoppingCartItemInput!) {
+    addItem(item: $item)
+  }
+`

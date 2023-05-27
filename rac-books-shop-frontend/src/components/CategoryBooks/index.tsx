@@ -1,10 +1,9 @@
 import './CategoryBooks.css'
 import CardBook from '../CardBook'
 import { ICategory } from '../../interfaces/ICategory'
-//import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { TextField } from '@mui/material'
-import { GetBooksByCategory } from '../../api/graphql/hooks'
+import { UseGetBooksByCategory } from '../../api/graphql/hooks'
 import { booksFilterVar, booksVar } from '../../api/graphql/state'
 import { useReactiveVar } from '@apollo/client'
 
@@ -19,7 +18,7 @@ const CategoryBooks = ({ category }: CategoryBooksProps) => {
   const [search, setSearch] = useState("");
 
   const books =  useReactiveVar(booksVar);
-  GetBooksByCategory(search);
+  UseGetBooksByCategory(search);
 
   booksFilterVar({
     category : category

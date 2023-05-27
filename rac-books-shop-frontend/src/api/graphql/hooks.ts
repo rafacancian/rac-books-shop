@@ -1,11 +1,10 @@
-import { useQuery, useReactiveVar } from "@apollo/client";
+import { useMutation, useQuery, useReactiveVar } from "@apollo/client";
 import { IBook } from "../../interfaces/IBook";
-import { GET_BOOKS_BY_CATEGORY, GET_SHOPPING_CART } from "./queries";
-import { ICategory } from "../../interfaces/ICategory";
+import { GET_BOOKS_BY_CATEGORY, GET_SHOPPING_CART, SHOPPING_CART_ADD_ITEM } from "./queries";
 import { booksFilterVar, booksVar } from "./state";
 import { IShoppingCart } from "../../interfaces/IShoppingCart";
 
-export const GetBooksByCategory = (search: String) => {
+export const UseGetBooksByCategory = (search: String) => {
     const filter = useReactiveVar(booksFilterVar)
     useQuery<{ books: IBook[] }>(GET_BOOKS_BY_CATEGORY, {
         variables: {
@@ -19,6 +18,14 @@ export const GetBooksByCategory = (search: String) => {
     })
 }
 
-export const GetShoppingCart = () => {
+export const UseGetShoppingCart = () => {
     return useQuery<{ shoppingCart: IShoppingCart }>(GET_SHOPPING_CART)
+}
+
+export const UseAddItem = () => {
+    return useMutation(SHOPPING_CART_ADD_ITEM, {
+        refetchQueries : [
+            "GetShoppingCart"
+        ]
+    })
 }
