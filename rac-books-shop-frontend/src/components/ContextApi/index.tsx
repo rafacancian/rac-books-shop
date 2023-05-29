@@ -1,6 +1,6 @@
 import { ReactElement, createContext, useContext } from "react";
 import { IShoppingCart } from "../../interfaces/IShoppingCart";
-import { UseGetShoppingCart, UseAddItem } from "../../api/graphql/hooks";
+import { UseGetShoppingCart, UseAddItem, UseRemoveItem } from "../../api/graphql/hooks";
 import { IShoppingCartItem } from "../../interfaces/IShoppingCartItem";
 
 export interface IShoppingCartContext {
@@ -24,6 +24,7 @@ const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) => {
 
     const { data, loading: loadingGetShoppingCart } = UseGetShoppingCart()
     const [addItem, {loading: loadingAddItem}] = UseAddItem()
+    const [removeItem, {loading: loadingRemoveItem}] = UseRemoveItem()
 
     const addItemFunction = (item: IShoppingCartItem) => {
          addItem({
@@ -38,7 +39,15 @@ const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) => {
     }
 
     const removeItemFunction = (item : IShoppingCartItem) => {
-        console.log("[ShoppingCartProvider] removeItem: " + item)
+        removeItem({
+            variables: {
+                item: {
+                    bookId: item.book.id,
+                    optionId: item.option.id,
+                    quantity: item.quantity
+                }
+            }
+        })
     }
 
     return (
@@ -46,7 +55,7 @@ const ShoppingCartProvider = ({ children }: ShoppingCartProviderProps) => {
             shoppingCart: data?.shoppingCart,
             addItemFunction,
             removeItemFunction,
-            loading : loadingGetShoppingCart //|| loadingAddItem
+            loading : loadingGetShoppingCart || loadingAddItem || loadingRemoveItem
         }}>
             {children}
         </ShoppingCartContext.Provider>

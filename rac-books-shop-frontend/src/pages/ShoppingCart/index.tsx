@@ -5,11 +5,17 @@ import { AbBotao } from "ds-alurabooks"
 import "./ShoppingCart.css"
 import ShoppingCartItem from "../ShoppintCartItem"
 import { useShoppingCartContext } from "../../components/ContextApi"
+import Loader from "../../components/Loader"
 
 const ShoppingCart = () => {
 
     //const { data, loading } = GetShoppingCart()
-    const { shoppingCart } = useShoppingCartContext()
+    const { shoppingCart, loading } = useShoppingCartContext()
+
+    if(loading) {
+       return <Loader></Loader>
+    }
+
     return (
         <section className="pagina-carrinho">
             <GridTitle text="My Shopping cart" />

@@ -5,7 +5,7 @@ import { useState } from "react"
 import CategoryTitle from '../../components/CategoryTitle'
 
 import './Book.css'
-import { Button } from "@mui/material"
+import { Alert, Button, Stack } from "@mui/material"
 import BookDescription from "../../components/BookDescription"
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
@@ -15,6 +15,7 @@ import { IBook } from "../../interfaces/IBook"
 import { AxiosError } from "axios"
 import { getBookBySlug } from "../../api/axios/hooks"
 import { useShoppingCartContext } from "../../components/ContextApi"
+import { Margin } from "@mui/icons-material"
 
 const Book = () => {
 
@@ -22,6 +23,7 @@ const Book = () => {
     let [option, setOption] = useState<AbGrupoOpcao>()
     const [quantity, setQuantity] = useState(1)
     const { addItemFunction } = useShoppingCartContext()
+    const [showAlert, setShowAlert] = useState(false)
 
     const { data: book, isLoading, error } = useQuery<IBook | null, AxiosError>(["bookBySlug", params.slug], () => getBookBySlug(params.slug || ""))
     if (isLoading || !book) {
@@ -61,7 +63,6 @@ const Book = () => {
     ]
 
     function addBookToShoppingCart(): void {
-        debugger
         if (!book) {
             return
         }
@@ -74,11 +75,13 @@ const Book = () => {
             quantity,
             option: optionSelected
         })
+        setShowAlert(true)
     }
 
     return (
         <section className="livro-detalhe">
             <CategoryTitle title="Details about the book" />
+
             <div>
                 <div className="container">
                     <div className="image">
@@ -100,12 +103,21 @@ const Book = () => {
                         <p><strong>*You will keep updated about the future releases of the book</strong></p>
                         <footer>
                             <div className="qtdContainer">
-                                <AbInputQuantidade onChange={setQuantity} />
+                                <AbInputQuantidade value={quantity} onChange={setQuantity} />
                             </div>
-                            <div>
+                            <div style={{ display: "flex" }}>
                                 <Button variant="contained" size="large" onClick={addBookToShoppingCart}>Buy</Button>
+                                {showAlert &&
+                                    <Stack sx={{ width: '50%', margin: "0 10px" }} spacing={1}>
+                                        <Alert severity="success" color="success"
+                                            onClose={() => setShowAlert(false)}>
+                                            This is a success alert — check it out!
+                                        </Alert>
+                                    </Stack>
+                                }
                             </div>
                         </footer>
+
                     </div>
                 </div>
                 <div>

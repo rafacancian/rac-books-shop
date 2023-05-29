@@ -1,23 +1,47 @@
 import { AbInputQuantidade } from "ds-alurabooks";
 import { IShoppingCartItem } from "../../interfaces/IShoppingCartItem";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import "./ShoppingCartItem.css"
+import { useShoppingCartContext } from "../../components/ContextApi";
+import { useState } from "react";
+import Loader from "../../components/Loader";
 
 interface ShoppingCartItemProps {
     item: IShoppingCartItem
 }
 
-//const { adicionarItemCarrinho, removerItemCarrinho } = useCarrinhoContext()
+const ShoppingCartItem = ({ item }: ShoppingCartItemProps) => {
 
-const changeItem = (quantity: number) => {
-    if (quantity === 0) {
-        console.log("remove item ")
+    const { addItemFunction, removeItemFunction, loading } = useShoppingCartContext()
+    const [quantity, setQuantity] = useState(1)
+
+    if (loading) {
+        return <Loader ></Loader>
     }
-    console.log("add item")
-}
 
+    const functionRemoveItem = (item: IShoppingCartItem) => {
+        removeItemFunction({
+            book: item.book,
+            option: item.option,
+            quantity: 1
+        })
+    }
 
-const ShoppingCartItem = ({ item } : ShoppingCartItemProps) => {
+    const changeItemQuantity = (quantity: number) => {
+        if (quantity === 0) {
+            removeItemFunction({
+                book: item.book,
+                option: item.option,
+                quantity: quantity
+            })
+        }
+        addItemFunction({
+            book: item.book,
+            option: item.option,
+            quantity: quantity
+        })
+    }
 
     return (
         <div className="item-carrinho">
@@ -42,13 +66,13 @@ const ShoppingCartItem = ({ item } : ShoppingCartItemProps) => {
                 </ul>
             </div>
             <div className="quantidade">
-                <AbInputQuantidade 
-                    onChange={(changeItem)}
+                <AbInputQuantidade value={item.quantity}
+                    onChange={(changeItemQuantity)}
                 />
             </div>
             <div>
-                <button className="btn-excluir">
-                    lixeira
+                <button className="btn-excluir" onClick={() => functionRemoveItem(item)}>
+                    <DeleteIcon></DeleteIcon>
                 </button>
             </div>
         </div>
