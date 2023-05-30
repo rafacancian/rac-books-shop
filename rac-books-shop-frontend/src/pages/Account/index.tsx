@@ -12,7 +12,7 @@ const Account = () => {
                         <Link to="/admin/account/orders">Orders</Link>
                     </li>
                     <li>
-                        <Link to="admin/account/cupons">Cupons</Link>
+                        <Link to="/shopping-cart">Shopping Cart</Link>
                     </li>
                     <li>
                         <Link to="/admin/account/personaldata">Personal data</Link>

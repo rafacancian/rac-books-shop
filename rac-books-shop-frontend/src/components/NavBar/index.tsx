@@ -42,6 +42,10 @@ const NavBar = () => {
         navigate("/admin/account/orders")
     }
 
+    const WhenExecuteShoppingCart = () => {
+        navigate("/shopping-cart")
+    }
+
     return (
         <nav className="ab-navbar">
             <h1 className="logo">
@@ -84,6 +88,15 @@ const NavBar = () => {
                     </li>
                 </>)}
                 {userLogged && <>
+                    <li>
+                    <NavButton
+                            text="Shopping Cart"
+                            textAltSrc="User logo"
+                            imageSrc={userImg}
+                            onClick={WhenExecuteShoppingCart}
+                        />
+
+                    </li>
                     <li>
                         <NavButton
                             text="My Account"
