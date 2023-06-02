@@ -6,8 +6,6 @@ Frontend developed with React and Mui components and for the integration with th
 
 On the Backend part was used nodejs for the ease and speed of creating endpoints and json files as data base store. The focus of the backend part was estudy a integrate with react and graphql, so the database and security were not relevante at the moment
 
-
-
 ## Run project
 
 ### Frontend
@@ -21,6 +19,27 @@ On the Backend part was used nodejs for the ease and speed of creating endpoints
 - npm run start:dev (para correr o GraphQL)
 - http://localhost:8000
 - http://localhost:9000/graphql
+
+
+## Screenshots
+Home page
+![](imagens/page_home01.png)
+![](imagens/page_home02.png)
+
+Login
+![](imagens/page_login.png)
+
+Books
+![](imagens/page_books.png)
+
+Book
+![](imagens/page_book.png)
+
+Account
+![](imagens/page_account.png)
+
+Shopping Cart
+![](imagens/page_shopping_cart.png)
 
 
 ## Git Configuration 
